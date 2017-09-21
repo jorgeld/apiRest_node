@@ -25,6 +25,10 @@ function newUser(req, res){
     let user = new User();
     user.name = req.body.name;
     user.pass = req.body.pass;
+    user.img = req.body.img;
+    user.signupDate = req.body.signupDate;
+    user.lasLogin = req.body.lasLogin;
+    user.email = req.body.email;
     user.save(function (err, userStored) {
         if(err){
             res.status(500).send({message : `Error al salvar en la base de datos ----> ${err}` })
