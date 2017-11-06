@@ -18,4 +18,4 @@ mongoose.connect(config.db,function(err, res){
         console.log(`API REST corriendo en http://localhost:${config.port}`);
     });
 
-})
+});

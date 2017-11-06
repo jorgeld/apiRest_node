@@ -29,11 +29,11 @@ function newUser(req, res){
     user.signupDate = req.body.signupDate;
     user.lasLogin = req.body.lasLogin;
     user.email = req.body.email;
+
     user.save(function (err, userStored) {
         if(err){
             res.status(500).send({message : `Error al salvar en la base de datos ----> ${err}` })
         }
-
         res.status(200).send({user: userStored})
     })
 }
@@ -47,6 +47,8 @@ function updateUser(req, res){
         if(err){
             res.status(500).send({message : `Error al editar el usuario`});
         }
+
+
         res.status(200).send({user : userUpdate})
     })
 }
