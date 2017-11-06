@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 const app = require('./app');
 const config = require('./config');
 const port = process.env.PORT || 3001;
-const db = 'localhost:27017/shop';
 
 // Conectamos a la bbdd
 mongoose.connect(config.db,function(err, res){
