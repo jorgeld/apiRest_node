@@ -1,11 +1,12 @@
 'use strict';
 const User = require('../modelos/users');
+const moment = require('moment');
 
 function getUser(req, res){
     let userId = req.params.userId;
     User.findById(userId,function(err,user){
         if(err){return res.status(500).send({message:`Error al realizar la petición`})}
-        if(!user)return res.status(404).send({message:`El producte no existe`})
+        if(!user)return res.status(404).send({message:`El producte no existe`});
 
         res.status(200).send({user})
 
@@ -16,7 +17,7 @@ function getUser(req, res){
 function getUsers(req, res){
     User.find({},function(err,users){
         if(err){return res.status(500).send({message:`Error al realizar la petición`})}
-        if(!users)return res.status(404).send({message:`No existen usuarios`})
+        if(!users)return res.status(404).send({message:`No existen usuarios`});
         res.status(200).send({users})
     })
 }
@@ -26,9 +27,10 @@ function newUser(req, res){
     user.name = req.body.name;
     user.pass = req.body.pass;
     user.img = req.body.img;
-    user.signupDate = req.body.signupDate;
-    user.lasLogin = req.body.lasLogin;
+    user.userName = req.body.userName;
     user.email = req.body.email;
+    user.signupDate = moment().format('DD/MM/YYYY - HH:MM:SS');
+    user.lasLogin = req.body.lasLogin;
 
     user.save(function (err, userStored) {
         if(err){

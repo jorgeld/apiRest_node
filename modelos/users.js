@@ -10,13 +10,14 @@ const crypto = require('crypto');
 //Libreria para encriptación de bbdd
 const bcrypt = require('bcrypt-nodejs');
 
+
 const UserSchema = Schema({
     name: String,
-    // pass: { type:String, select : false},
     pass: { type:String, select : false},
     img : String,
-    email : { type:String,unique : true},
-    signupDate : {type : Date, default: Date.now()},
+    userName : String,
+    email : { type:String,unique : false},
+    signupDate : {type : String},
     lasLogin : Date,
 });
 
