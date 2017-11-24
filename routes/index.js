@@ -17,4 +17,6 @@ api.post('/user', UserCtrl.newUser);
 api.put('/user/update/:userId',UserCtrl.updateUser);
 api.delete('/user/delete/:userId',UserCtrl.deleteUser);
 
+api.post('/auth',UserCtrl.autentificar);
+
 module.exports = api;

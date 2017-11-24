@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="2fee458f-fd01-4fbc-8f58-a49fb981d76f" name="Default" comment="Añadido cifrado password">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />

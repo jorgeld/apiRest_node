@@ -13,7 +13,7 @@ const bcrypt = require('bcrypt-nodejs');
 
 const UserSchema = Schema({
     name: String,
-    pass: { type:String, select : false},
+    pass: { type:String},
     img : String,
     userName : String,
     email : { type:String,unique : false},

@@ -2,6 +2,9 @@
 const User = require('../modelos/users');
 const moment = require('moment');
 
+//Libreria para encriptación de bbdd
+const bcrypt = require('bcrypt-nodejs');
+
 function getUser(req, res){
     let userId = req.params.userId;
     User.findById(userId,function(err,user){
@@ -71,10 +74,33 @@ function deleteUser(req, res){
     })
 }
 
+function autentificar(req,res){
+    console.log('intentando entrar.....');
+    User.findOne({'userName': req.body.userName})
+        .exec(function(err,user){
+            if(err){
+                res.status(500).send({message: 'No se ha encontrado usuario'})
+            }else{
+                if(user == null){
+                    res.status(401).send({message: `No se ha encontrado usuarios con esas credenciales`})
+                }else{
+                    console.log(`Algo hemos encontrado ${user}`);
+
+                    bcrypt.compare(req.body.pass, user.pass , function(err, result){
+                        (result === true)
+                            ?res.status(200).send({message: `Credenciales correctas`})
+                            :res.status(401).send({message:` Identificador de Usuario o pass incorrectos`});
+                    })
+                }
+            }
+        })
+}
+
 module.exports = {
     getUser,
     getUsers,
     newUser,
     updateUser,
-    deleteUser
+    deleteUser,
+    autentificar
 };
