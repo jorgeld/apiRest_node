@@ -2,6 +2,7 @@
 
 const express = require('express');
 const UserCtrl = require('../controllers/users');
+const MonkeysCtrl = require('../controllers/monkeys');
 const api = express.Router();
 
 // CORS
@@ -11,12 +12,19 @@ api.use(function(req, res, next) {
     next();
 });
 
+//Users Services
 api.get('/user/:userId', UserCtrl.getUser);
 api.get('/users/', UserCtrl.getUsers);
 api.post('/user', UserCtrl.newUser);
 api.put('/user/update/:userId',UserCtrl.updateUser);
 api.delete('/user/delete/:userId',UserCtrl.deleteUser);
-
 api.post('/auth',UserCtrl.autentificar);
+
+//Monkeys Services
+api.get('/monkeys/', MonkeysCtrl.getMonkeys);
+api.get('/monkey/:monkeyId', MonkeysCtrl.getMonkey);
+api.post('/monkey', MonkeysCtrl.newMonkey);
+api.put('/monkey/update/:monkeyId', MonkeysCtrl.updateMonkey);
+api.delete('/monkey/delete/:monkeyId',MonkeysCtrl.deleteMonkey);
 
 module.exports = api;

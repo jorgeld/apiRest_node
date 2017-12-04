@@ -14,7 +14,6 @@ function getUser(req, res){
         res.status(200).send({user})
 
     })
-
 }
 
 function getUsers(req, res){
