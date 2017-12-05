@@ -7,6 +7,8 @@ const MonkeySchema = Schema({
     name: String,
     img : String,
     sexo : String,
+    pais : String,
+    bananas : Number,
     signupDate : {type : String},
     lastModified : {type : String},
 });

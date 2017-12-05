@@ -8,12 +8,9 @@ function getMonkeys(req, res){
     Monkey.find({},function(err,monkeys){
         if(err){return res.status(500).send({message:`Error al realizar la petición`})}
         if(!monkeys)return res.status(404).send({message:`No existen usuarios`});
-        console.log(`**********************************************************************`);
-        console.log(`** GET MONKEYS --- ${new moment()} --->`);
-        monkeys.forEach(function(monkey){
-            console.log(`** name:${monkey.name} -- id:${monkey._id} -- signupDate:${monkey.signupDate} -- lastModified:${monkey.lastModified}`)
-        });
-        console.log(`**********************************************************************`);
+        console.log(`** GET MONKEYS --- ${new moment()} ------------------------------------->`);
+        monkeys.forEach(function(monkey){console.log(`** name:${monkey.name} -- id:${monkey._id} -- signupDate:${monkey.signupDate} -- lastModified:${monkey.lastModified}`)});
+
         res.status(200).send({monkeys})
     })
 }
@@ -33,10 +30,13 @@ function newMonkey(req , res){
 
     var aleatorioNombre = Math.floor((Math.random() * constantes.nombres.length) + 1);
     var aleatorioApellido = Math.floor((Math.random() * constantes.apellidos.length) + 1);
+    var aleatorioPaises = Math.floor((Math.random() * constantes.paises.length) + 1);
 
     monkey.name = `${constantes.nombres[aleatorioNombre]} ${constantes.apellidos[aleatorioApellido]}`;
     monkey.sexo = (aleatorioNombre > 99)? monkey.sexo = 'HEMBRA': monkey.sexo = 'MACHO';
+    monkey.pais = constantes.paises[aleatorioPaises].toUpperCase();
     monkey.img = req.body.img;
+    monkey.bananas = 0;
     monkey.signupDate = moment().format('DD/MM/YYYY - HH:MM:SS');
     monkey.lastModified = moment().format('DD/MM/YYYY - HH:MM:SS');
 
@@ -54,10 +54,6 @@ function updateMonkey(req,res){
     let monkeyId = req.params.monkeyId;
     let update = req.body;
     let options = {};
-
-    // let monkey = new Monkey();
-    // monkey.signupDate = moment().format('DD/MM/YYYY - HH:MM:SS');
-    // monkey.lastModified = req.body.lasLogin;
 
     Monkey.findByIdAndUpdate(monkeyId,update,options,function(err,monkeyUpdate){
         monkeyUpdate.lastModified = moment().format('DD/MM/YYYY - HH:MM:SS');
@@ -87,10 +83,24 @@ function deleteMonkey(req, res){
     })
 }
 
+function putBanana(req, res){
+
+    let monkeyId = req.params.monkeyId;
+
+    Monkey.findByIdAndUpdate(monkeyId,function(err,monkeyUpdate){
+
+        monkeyUpdate.bananas = monkeyUpdate.bananas++;
+
+        if(err){return res.status(500).send({message:`Error al dar banana`})}
+        res.status(200).send({monkey})
+    })
+}
+
 module.exports = {
     getMonkeys,
     getMonkey,
     newMonkey,
     updateMonkey,
-    deleteMonkey
+    deleteMonkey,
+    putBanana
 };

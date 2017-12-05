@@ -27,4 +27,8 @@ api.post('/monkey', MonkeysCtrl.newMonkey);
 api.put('/monkey/update/:monkeyId', MonkeysCtrl.updateMonkey);
 api.delete('/monkey/delete/:monkeyId',MonkeysCtrl.deleteMonkey);
 
+api.get('/monkey/banana/:monkeyId' , MonkeysCtrl.putBanana);
+
+http://localhost:3000/api/monkey/banana/
+
 module.exports = api;
