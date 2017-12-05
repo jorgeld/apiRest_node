@@ -6,6 +6,7 @@ const Schema = mongoose.Schema;
 const MonkeySchema = Schema({
     name: String,
     img : String,
+    sexo : String,
     signupDate : {type : String},
     lastModified : {type : String},
 });
