@@ -5,9 +5,14 @@ const moment = require('moment');
 
 function getMonkeys(req, res){
     Monkey.find({},function(err,monkeys){
-        console.log(`--- GET MONKEYS --- ${new moment()} --->`);
         if(err){return res.status(500).send({message:`Error al realizar la petición`})}
         if(!monkeys)return res.status(404).send({message:`No existen usuarios`});
+        console.log(`//////////////////////////`)
+        console.log(`--- GET MONKEYS --- ${new moment()} --->`);
+        monkeys.forEach(function(monkey){
+            console.log(`--- ${monkey.name}∫`)
+        });
+        console.log(`//////////////////////////`)
         res.status(200).send({monkeys})
     })
 }
