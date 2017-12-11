@@ -9,7 +9,7 @@ function getMonkeys(req, res){
         if(err){return res.status(500).send({message:`Error al realizar la petición`})}
         if(!monkeys)return res.status(404).send({message:`No existen usuarios`});
         console.log(`** GET MONKEYS --- ${new moment()} ------------------------------------->`);
-        monkeys.forEach(function(monkey){console.log(`** name:${monkey.name} -- id:${monkey._id} -- signupDate:${monkey.signupDate} -- lastModified:${monkey.lastModified}`)});
+        monkeys.forEach(function(monkey){console.log(`** name:${monkey.name} -- bananas:${monkey.bananas} -- id:${monkey._id} -- signupDate:${monkey.signupDate} -- lastModified:${monkey.lastModified}`)});
 
         res.status(200).send({monkeys})
     })
@@ -85,16 +85,21 @@ function deleteMonkey(req, res){
 
 function putBanana(req, res){
 
-    let monkeyId = req.params.monkeyId;
+    Monkey.findById(req.params.monkeyId,function(err,monkey){
 
-    Monkey.findByIdAndUpdate(monkeyId,function(err,monkeyUpdate){
+        if(err)return res.status(500).send({message:`Error al borrar monkey`});
 
-        monkeyUpdate.bananas = monkeyUpdate.bananas++;
+        let b  = monkey.bananas + 1;
 
-        if(err){return res.status(500).send({message:`Error al dar banana`})}
-        res.status(200).send({monkey})
+        monkey.update({bananas : b},function(err){
+            if(err){
+                res.status(500).send({message : `Error al editar el monkey`});
+            }
+            res.status(200).send({monkey : monkey})
+        })
     })
 }
+
 
 module.exports = {
     getMonkeys,
