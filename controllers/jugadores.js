@@ -38,7 +38,7 @@ function newJugador(req , res){
         rebotes : Math.floor((Math.random() * (99 - 10) + 10)),
         pase : Math.floor((Math.random() * (99 - 10) + 10)),
     };
-    jugador.posicion = `${constantes.posiciones[Math.floor((Math.random() * constantes.posiciones.length) + 1)]}`;
+    (req.body.puesto)?jugador.posicion = req.body.puesto:jugador.posicion = `${constantes.posiciones[Math.floor((Math.random() * constantes.posiciones.length -1) + 1)]}`;
     jugador.img = req.body.img;
     jugador.team = null;
     jugador.galardones = null;
@@ -59,7 +59,6 @@ function updateJugador(req,res){
     let jugadorId = req.params.jugadorId;
     let update = req.body;
     let options = {};
-
     Jugador.findByIdAndUpdate(jugadorId,update,options,function(err,jugadorUpdate){
         jugadorUpdate.lastModified = moment().format('DD/MM/YYYY - HH:MM:SS');
         if(err){

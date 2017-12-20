@@ -36,7 +36,6 @@ api.post('/jugador', JugadoresCtrl.newJugador);
 api.put('/jugador/update/:jugadorId', JugadoresCtrl.updateJugador);
 api.delete('/jugador/delete/:jugadorId',JugadoresCtrl.deleteJugador);
 
-
 // http://localhost:3000/api/monkey/banana/
 
 module.exports = api;
