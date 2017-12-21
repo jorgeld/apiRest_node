@@ -4,6 +4,7 @@ const express = require('express');
 const UserCtrl = require('../controllers/users');
 const MonkeysCtrl = require('../controllers/monkeys');
 const JugadoresCtrl = require('../controllers/jugadores');
+const EquiposCtrl = require('../controllers/equipos');
 const api = express.Router();
 
 // CORS
@@ -35,6 +36,13 @@ api.get('/jugador/:jugadorId', JugadoresCtrl.getJugador);
 api.post('/jugador', JugadoresCtrl.newJugador);
 api.put('/jugador/update/:jugadorId', JugadoresCtrl.updateJugador);
 api.delete('/jugador/delete/:jugadorId',JugadoresCtrl.deleteJugador);
+
+//Equipos Services
+api.get('/equipos/', EquiposCtrl.getEquipos);
+api.get('/equipo/:equipoId', EquiposCtrl.getEquipo);
+api.post('/equipo', EquiposCtrl.newEquipo);
+api.put('/equipo/update/:equipoId', EquiposCtrl.updateEquipo);
+api.delete('/equipo/delete/:equipoId',EquiposCtrl.deleteEquipo);
 
 // http://localhost:3000/api/monkey/banana/
 
