@@ -23,9 +23,9 @@ function getEquipo(req, res){
 }
 
 function newEquipo(req , res){
-    let equipo = new Jugador();
+    let equipo = new Equipo();
 
-    equipo.name = req.body.nombre;
+    equipo.name = req.body.name;
     equipo.jugadores = null;
     equipo.palmares = null;
     equipo.signupDate = moment().format('DD/MM/YYYY - HH:MM:SS');
@@ -66,7 +66,7 @@ function deleteEquipo(req, res){
             if(err){
                 res.status(500).send({message : `Error al borrar equipo`});
             }
-            console.log(`--- DELETE JUGADOR--- ${new moment()} --->`);
+            console.log(`--- DELETE EQUIPO--- ${new moment()} --->`);
             res.status(200).send({message : `El equipo ha sido eliminado`})
         })
 

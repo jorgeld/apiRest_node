@@ -25,9 +25,9 @@ function getJugador(req, res){
 function newJugador(req , res){
     let jugador = new Jugador();
 
-    var aleatorioNombre = Math.floor((Math.random() * constantes.nombreshombre.length) + 1);
-    var aleatorioApellido = Math.floor((Math.random() * constantes.apellidos.length) + 1);
-    var aleatorioProvincia = Math.floor((Math.random() * constantes.provincias.length) + 1);
+    var aleatorioNombre = Math.floor((Math.random() * constantes.nombreshombre.length -1) + 1);
+    var aleatorioApellido = Math.floor((Math.random() * constantes.apellidos.length -1) + 1);
+    var aleatorioProvincia = Math.floor((Math.random() * constantes.provincias.length -1) + 1);
 
     jugador.name = `${constantes.nombreshombre[aleatorioNombre]} ${constantes.apellidos[aleatorioApellido]}`;
     jugador.lugar = constantes.provincias[aleatorioProvincia].toUpperCase();
