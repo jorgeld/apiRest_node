@@ -37,10 +37,12 @@ function newJugador(req , res){
         defensa : Math.floor((Math.random() * (99 - 10) + 10)),
         rebotes : Math.floor((Math.random() * (99 - 10) + 10)),
         pase : Math.floor((Math.random() * (99 - 10) + 10)),
+        agresividad : Math.floor((Math.random() * (99 - 10) + 10)),
+        sexualidad : Math.floor((Math.random() * (99 - 10) + 10)),
     };
     (req.body.puesto)?jugador.posicion = req.body.puesto:jugador.posicion = `${constantes.posiciones[Math.floor((Math.random() * constantes.posiciones.length -1) + 1)]}`;
     jugador.img = req.body.img;
-    jugador.team = null;
+    jugador.team = '';
     jugador.galardones = null;
     jugador.signupDate = moment().format('DD/MM/YYYY - HH:MM:SS');
     jugador.lastModified = moment().format('DD/MM/YYYY - HH:MM:SS');
@@ -55,7 +57,6 @@ function newJugador(req , res){
 }
 
 function updateJugador(req,res){
-
     let jugadorId = req.params.jugadorId;
     let update = req.body;
     let options = {};

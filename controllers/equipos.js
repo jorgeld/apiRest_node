@@ -26,7 +26,7 @@ function newEquipo(req , res){
     let equipo = new Equipo();
 
     equipo.name = req.body.name;
-    equipo.jugadores = null;
+    equipo.jugadores = [];
     equipo.palmares = null;
     equipo.signupDate = moment().format('DD/MM/YYYY - HH:MM:SS');
     equipo.lastModified = moment().format('DD/MM/YYYY - HH:MM:SS');
@@ -45,10 +45,12 @@ function updateEquipo(req,res){
     let equipoId = req.params.equipoId;
     let update = req.body;
     let options = {};
+
     Equipo.findByIdAndUpdate(equipoId,update,options,function(err,equipoUpdate){
         equipoUpdate.lastModified = moment().format('DD/MM/YYYY - HH:MM:SS');
         if(err){
             res.status(500).send({message : `Error al editar equipo`});
+            res.status(400).send({message : `Error al editar equipo`});
         }
         console.log(`--- UPDATE EQUIPO--- ${new moment()} --->`);
         res.status(200).send({equipo : equipoUpdate})

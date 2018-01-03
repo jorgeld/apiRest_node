@@ -5,6 +5,7 @@ const UserCtrl = require('../controllers/users');
 const MonkeysCtrl = require('../controllers/monkeys');
 const JugadoresCtrl = require('../controllers/jugadores');
 const EquiposCtrl = require('../controllers/equipos');
+const UtilitiesCtrl = require('../controllers/utils');
 const api = express.Router();
 
 // CORS
@@ -13,6 +14,9 @@ api.use(function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
+
+//Utilidades
+api.get('/utilidades/comunidades', UtilitiesCtrl.getComunidades);
 
 //Users Services
 api.get('/user/:userId', UserCtrl.getUser);
