@@ -17,6 +17,12 @@ api.use(function(req, res, next) {
 
 //Utilidades
 api.get('/utilidades/comunidades', UtilitiesCtrl.getComunidades);
+api.get('/utilidades/provincias', UtilitiesCtrl.getProvincias);
+api.get('/utilidades/paises', UtilitiesCtrl.getPaises);
+api.get('/utilidades/nombres', UtilitiesCtrl.getNombres);
+api.get('/utilidades/nombrehombres', UtilitiesCtrl.getNombresHombre);
+api.get('/utilidades/nombresmujeres', UtilitiesCtrl.getNombresMujeres);
+api.get('/utilidades/apellidos', UtilitiesCtrl.getApellidos);
 
 //Users Services
 api.get('/user/:userId', UserCtrl.getUser);
