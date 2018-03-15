@@ -56,6 +56,54 @@ function newJugador(req , res){
     })
 }
 
+function generarHornada(req,res){
+
+    var posiciones = ['PIVOT','ALA-PIVOT','ALERO','ESCOLTA','BASE'];
+
+    for(var i = 0; i < posiciones.length; i++){
+
+        for(var j = 0; j< 40; j++){
+
+            let jugador = new Jugador();
+
+            var aleatorioNombre = Math.floor((Math.random() * constantes.nombreshombre.length -1) + 1);
+            var aleatorioApellido = Math.floor((Math.random() * constantes.apellidos.length -1) + 1);
+            var aleatorioProvincia = Math.floor((Math.random() * constantes.provincias.length -1) + 1);
+
+            jugador.name = `${constantes.nombreshombre[aleatorioNombre]} ${constantes.apellidos[aleatorioApellido]}`;
+            jugador.lugar = constantes.provincias[aleatorioProvincia].toUpperCase();
+            jugador.edad = Math.floor((Math.random() * (22 - 18) + 18));
+            jugador.atributos = {
+                ataque : Math.floor((Math.random() * (99 - 10) + 10)),
+                defensa : Math.floor((Math.random() * (99 - 10) + 10)),
+                rebotes : Math.floor((Math.random() * (99 - 10) + 10)),
+                pase : Math.floor((Math.random() * (99 - 10) + 10)),
+                agresividad : Math.floor((Math.random() * (99 - 10) + 10)),
+                sexualidad : Math.floor((Math.random() * (99 - 10) + 10)),
+            };
+            jugador.posicion = posiciones[i];
+            jugador.img = '';
+            jugador.team = '';
+            jugador.galardones = null;
+            jugador.signupDate = moment().format('DD/MM/YYYY - HH:MM:SS');
+            jugador.lastModified = moment().format('DD/MM/YYYY - HH:MM:SS');
+
+            jugador.save(function (err, jugadorStored) {
+                if(err){
+                    res.status(500).send({message : `Error al salvar en la base de datos ----> ${err}` })
+                }
+                console.log(`--- NEW JUGADOR EN HORNADA--- ${new moment()} --->`);
+                // res.status(200).send({jugador: jugadorStored})
+            })
+        }
+    }
+
+    res.status(200).send('Hornada generada correctamente');
+
+
+
+}
+
 function updateJugador(req,res){
     let jugadorId = req.params.jugadorId;
     let update = req.body;
@@ -93,6 +141,7 @@ module.exports = {
     getJugador,
     getJugadores,
     newJugador,
+    generarHornada,
     updateJugador,
     deleteJugador,
 };

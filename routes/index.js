@@ -44,6 +44,7 @@ api.get('/monkey/banana/:monkeyId' , MonkeysCtrl.putBanana);
 api.get('/jugadores/', JugadoresCtrl.getJugadores);
 api.get('/jugador/:jugadorId', JugadoresCtrl.getJugador);
 api.post('/jugador', JugadoresCtrl.newJugador);
+api.post('/hornadajugadores', JugadoresCtrl.generarHornada);
 api.put('/jugador/update/:jugadorId', JugadoresCtrl.updateJugador);
 api.delete('/jugador/delete/:jugadorId',JugadoresCtrl.deleteJugador);
 
