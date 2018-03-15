@@ -26,6 +26,8 @@ function newEquipo(req , res){
     let equipo = new Equipo();
 
     equipo.name = req.body.name;
+    equipo.bandera = req.body.bandera;
+    equipo.escudo = req.body.escudo;
     equipo.jugadores = [];
     equipo.palmares = null;
     equipo.signupDate = moment().format('DD/MM/YYYY - HH:MM:SS');

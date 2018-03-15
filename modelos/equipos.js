@@ -5,6 +5,8 @@ const Schema = mongoose.Schema;
 
 const EquiposSchema = Schema({
     name: String,
+    bandera: String,
+    escudo: String,
     jugadores: Array,
     palmares : Object,
     signupDate : {type : String},
