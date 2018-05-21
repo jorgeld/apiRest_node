@@ -47,13 +47,17 @@ api.post('/jugador', JugadoresCtrl.newJugador);
 api.post('/hornadajugadores', JugadoresCtrl.generarHornada);
 api.put('/jugador/update/:jugadorId', JugadoresCtrl.updateJugador);
 api.delete('/jugador/delete/:jugadorId',JugadoresCtrl.deleteJugador);
+api.get('/deleteAllJugadores',JugadoresCtrl.deleteAllJugadores);
 
 //Equipos Services
 api.get('/equipos/', EquiposCtrl.getEquipos);
 api.get('/equipo/:equipoId', EquiposCtrl.getEquipo);
 api.post('/equipo', EquiposCtrl.newEquipo);
+api.post('/equipos/guardarDraft',EquiposCtrl.guardarDraft);
 api.put('/equipo/update/:equipoId', EquiposCtrl.updateEquipo);
 api.delete('/equipo/delete/:equipoId',EquiposCtrl.deleteEquipo);
+api.delete('/deleteAllEquipos',EquiposCtrl.deleteAllEquipos);
+api.get('/generarEquipos',EquiposCtrl.generarEquipos);
 
 // http://localhost:3000/api/monkey/banana/
 

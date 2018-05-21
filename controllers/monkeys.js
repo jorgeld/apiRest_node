@@ -20,7 +20,6 @@ function getMonkey(req, res){
     Monkey.findById(monkeyId,function(err,monkey){
         if(err){return res.status(500).send({message:`Error al realizar la petición`})}
         if(!monkey)return res.status(404).send({message:`El monkey no existe`});
-        console.log(`--- GET MONKEY--- ${new moment()} --->`);
         res.status(200).send({monkey})
     })
 }
