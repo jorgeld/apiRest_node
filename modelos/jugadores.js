@@ -10,7 +10,7 @@ const JugadoresSchema = Schema({
     lugar : String,
     posicion : String,
     atributos : Object,
-    team : Object,
+    team : String,
     galardones : Object,
     signupDate : {type : String},
     lastModified : {type : String},
