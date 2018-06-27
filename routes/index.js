@@ -5,6 +5,7 @@ const UserCtrl = require('../controllers/users');
 const MonkeysCtrl = require('../controllers/monkeys');
 const JugadoresCtrl = require('../controllers/jugadores');
 const EquiposCtrl = require('../controllers/equipos');
+const PartidosCtrl = require('../controllers/partidos');
 const UtilitiesCtrl = require('../controllers/utils');
 const api = express.Router();
 
@@ -58,6 +59,14 @@ api.put('/equipo/update/:equipoId', EquiposCtrl.updateEquipo);
 api.delete('/equipo/delete/:equipoId',EquiposCtrl.deleteEquipo);
 api.delete('/deleteAllEquipos',EquiposCtrl.deleteAllEquipos);
 api.get('/generarEquipos',EquiposCtrl.generarEquipos);
+
+//Partidos
+api.post('/partido', PartidosCtrl.newPartido);
+api.get('/partidos', PartidosCtrl.getPartidos);
+api.get('/partido/:partidoId', PartidosCtrl.getPartido);
+api.put('/partido/update/:partidoId', PartidosCtrl.updateEquipo);
+api.delete('/partido/delete/:partidoId', PartidosCtrl.deletePartido);
+api.delete('/deleteAllPartidos', PartidosCtrl.deleteAllPartidos);
 
 // http://localhost:3000/api/monkey/banana/
 

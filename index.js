@@ -15,7 +15,7 @@ mongoose.connect(config.db,function(err, res){
 
     app.on('Escuchando ---> ' , function(){
         console.log('Servidor Funcionando ....')
-    })
+    });
 
     app.listen(config.port,() => {
         console.log(`API REST corriendo en http://localhost:${config.port}`);
