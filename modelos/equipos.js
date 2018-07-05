@@ -8,7 +8,7 @@ const EquiposSchema = Schema({
     bandera: String,
     escudo: String,
     jugadores: Array,
-    palmares : Object,
+    palmares : Number,
     signupDate : {type : String},
     lastModified : {type : String},
 });
