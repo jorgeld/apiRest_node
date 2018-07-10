@@ -39,47 +39,9 @@ function newTorneo(req , res){
                 }
                 res.status(200).send({torneo: torneoStored})
             })
-
         })
     })
-
 }
-
-// async function getTeam(req, res){
-//     let equipoId = req;
-//     Equipo.findById(equipoId,function(err,equipo){
-//         if(err){return res.status(500).send({message:`Error al realizar la petición`})}
-//         if(!equipo)return res.status(404).send({message:`El equipo no existe`});
-//         res.status(200).send({equipo})
-//     })
-// }
-
-    // function putBanana(req, res){
-    //
-    //     Monkey.findById(req.params.monkeyId,function(err,monkey){
-    //
-    //         if(err)return res.status(500).send({message:`Error al borrar monkey`});
-    //
-    //         let b  = monkey.bananas + 1;
-    //
-    //         monkey.update({bananas : b},function(err){
-    //             if(err){
-    //                 res.status(500).send({message : `Error al editar el monkey`});
-    //             }
-    //             res.status(200).send({monkey : monkey})
-    //         })
-    //     })
-    // }
-
-
-
-
-    // torneo.save(function (err, torneoStored) {
-    //     if(err){
-    //         res.status(500).send({message : `Error al salvar torneo en la base de datos ----> ${err}` })
-    //     }
-    //     res.status(200).send({torneo: torneoStored})
-    // })
 
 
 function deleteAllTorneos(req, res){
