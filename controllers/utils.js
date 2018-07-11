@@ -3,7 +3,6 @@ const moment = require('moment');
 
 function getComunidades(req, res) {
     res.status(200).send({
-
         data: [
             {
                 nombre: 'Andalucia',

@@ -34,7 +34,6 @@ function newEquipo(req , res){
     equipo.jugadores = [];
     equipo.palmares = null;
     equipo.signupDate = moment().format('DD/MM/YYYY - HH:MM:SS');
-    equipo.lastModified = moment().format('DD/MM/YYYY - HH:MM:SS');
 
     equipo.save(function (err, equipoStored) {
         if(err){
@@ -124,31 +123,22 @@ function guardarDraft(req,res){
 
 function updateEquipo(req,res){
 
+    console.log('Actualizando equipo --->');
+
     let equipoId = req.params.equipoId;
     let update = req.body;
     let options = {};
 
-    Equipo.findByIdAndUpdate(equipoId,update,options,function(err,equipoUpdate){
-        equipoUpdate.lastModified = moment().format('DD/MM/YYYY - HH:MM:SS');
-        console.log(`--- UPDATE EQUIPO--- ${new moment()} --->`);
-    })
-
-    // return Equipo.update(equipoId,update,options)
-    //     .then(function(response){
-    //         let equipo = response;
-    //         equipo["jugadores"].forEach(function(jugador){
-    //
-    //             let ids = [];
-    //             ids.push(jugador._id);
-    //
-    //             return Jugador.updateMany(ids,{team:equipo.name},{multi: true})
-    //                 .then(function(res){
-    //                 console.log(`jugador ------> ${res}`)
-    //             })
-    //         })
-    //     })
-
-    res.status(200).send({message : `jugadores modificados`})
+    Equipo.findOneAndUpdate(equipoId,update,function(err,equipoUpdate){
+        console.log(equipoUpdate);
+        if(err){
+            res.status(500).send({message : `Error al editar equipo`});
+            res.status(400).send({message : `Error al editar equipo`});
+        }else{
+            console.log(`--- UPDATE JUGADOR--- ${new moment()} --->`);
+            res.status(200).send({equipo : equipoUpdate})
+        }
+    });
 
 
 }

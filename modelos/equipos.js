@@ -9,8 +9,7 @@ const EquiposSchema = Schema({
     escudo: String,
     jugadores: Array,
     palmares : Number,
-    signupDate : {type : String},
-    lastModified : {type : String},
+    signupDate : {type : String}
 });
 
 module.exports = mongoose.model('Equipo', EquiposSchema);

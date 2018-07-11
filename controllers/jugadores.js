@@ -106,7 +106,6 @@ function updateJugador(req,res){
     let update = req.body;
     let options = {};
 
-
     console.log(`UPDATE JUGADOR --> ID --> ${jugadorId}`);
     console.log(`UPDATE JUGADOR --> BODY -->`, req.body);
 
