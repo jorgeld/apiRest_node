@@ -123,14 +123,14 @@ function guardarDraft(req,res){
 
 function updateEquipo(req,res){
 
-    console.log('Actualizando equipo --->');
-
     let equipoId = req.params.equipoId;
     let update = req.body;
     let options = {};
 
-    Equipo.findOneAndUpdate(equipoId,update,function(err,equipoUpdate){
-        console.log(equipoUpdate);
+    console.log(' TIPO DATO -----_> ' , typeof equipoId);
+
+    Equipo.findByIdAndUpdate(equipoId,update,options,function(err,equipoUpdate){
+        equipoUpdate.lastModified = moment().format('DD/MM/YYYY - HH:MM:SS');
         if(err){
             res.status(500).send({message : `Error al editar equipo`});
             res.status(400).send({message : `Error al editar equipo`});
@@ -138,7 +138,13 @@ function updateEquipo(req,res){
             console.log(`--- UPDATE JUGADOR--- ${new moment()} --->`);
             res.status(200).send({equipo : equipoUpdate})
         }
+        console.log(`--- UPDATE EQUIPO--- ${new moment()} --->`);
     });
+    //res.status(200).send({message : `jugadores modificados`})
+
+
+
+
 
 
 }
