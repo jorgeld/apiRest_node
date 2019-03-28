@@ -86,8 +86,16 @@ function autentificar(req,res){
                     console.log(`Algo hemos encontrado ${user}`);
 
                     bcrypt.compare(req.body.pass, user.pass , function(err, result){
+
                         (result === true)
-                            ?res.status(200).send({message: `Credenciales correctas`})
+                            ?res.status(200).send({
+                                message: `Credenciales correctas`,
+                                user: {
+                                    name:user.name,
+                                    userName:user.userName,
+                                    email:user.email
+                                }
+                            })
                             :res.status(401).send({message:` Identificador de Usuario o pass incorrectos`});
                     })
                 }
