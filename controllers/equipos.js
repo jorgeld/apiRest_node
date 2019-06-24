@@ -25,6 +25,15 @@ function getEquipo(req, res){
     })
 }
 
+function getEquipoPlayers(req, res){
+    let equipoId = req.params.equipoId;
+    Equipo.findById(equipoId,function(err,equipo){
+        if(err){return res.status(500).send({message:`Error al realizar la petición`})}
+        if(!equipo)return res.status(404).send({message:`El equipo no existe`});
+        res.status(200).send({jugadores : equipo['jugadores']})
+    })
+}
+
 function newEquipo(req , res){
     let equipo = new Equipo();
 
@@ -199,6 +208,7 @@ function deleteAllEquipos(req, res){
 module.exports = {
     getEquipos,
     getEquipo,
+    getEquipoPlayers,
     newEquipo,
     updateEquipo,
     deleteEquipo,

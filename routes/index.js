@@ -54,6 +54,7 @@ api.get('/deleteAllJugadores',JugadoresCtrl.deleteAllJugadores);
 //Equipos Services
 api.get('/equipos/', EquiposCtrl.getEquipos);
 api.get('/equipo/:equipoId', EquiposCtrl.getEquipo);
+api.get('/equipo-players/:equipoId', EquiposCtrl.getEquipoPlayers);
 api.post('/equipo', EquiposCtrl.newEquipo);
 api.post('/equipos/guardarDraft',EquiposCtrl.guardarDraft);
 api.put('/equipo/update/:equipoId', EquiposCtrl.updateEquipo);
