@@ -21,6 +21,9 @@ function newTorneo(req , res){
     let _campeon = req.body.campeon;
     let _subcampeon = req.body.subcampeon;
 
+    console.log('campeon --> ' , _campeon)
+    console.log('subcampeon --> ' , _subcampeon)
+
     let query_camp = Equipo.findOne({_id: _campeon});
     assert.ok(!(query_camp instanceof Promise));
 
