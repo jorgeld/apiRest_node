@@ -9,6 +9,9 @@ const EquiposSchema = Schema({
     escudo: String,
     jugadores: Array,
     palmares : Number,
+    campeonatos : Number,
+    subcampeonatos : Number,
+    terceros : Number,
     signupDate : {type : String}
 });
 
