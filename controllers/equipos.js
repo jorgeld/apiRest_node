@@ -6,6 +6,16 @@ const moment = require('moment');
 const async = require('async');
 // const async = require('async/concatSeries');
 const constantes = require('../constantes');
+const multer = require('multer');
+
+const http = require("http");
+const path = require("path");
+const fs = require("fs");
+
+const express = require('express')
+const app = express();
+
+
 
 function getEquipos(req, res){
     Equipo.find({},function(err,equipos){
@@ -152,10 +162,6 @@ function updateEquipo(req,res){
     //res.status(200).send({message : `jugadores modificados`})
 
 
-
-
-
-
 }
 
 function deleteEquipo(req, res){
@@ -204,6 +210,48 @@ function deleteAllEquipos(req, res){
     });
 }
 
+function uploadImg(req, res){
+
+    console.log(' ******* UPLOADING IMG ******* ' );
+
+    var Storage = multer.diskStorage({
+        destination: function(req, file, callback) {
+            callback(null, "./Images");
+        },
+        filename: function(req, file, callback) {
+            callback(null, 'nombre_ejemplo');
+        }
+    });
+
+    var upload = multer({
+        storage: Storage
+    });
+
+
+    app.post('/profile', upload.single('file'), function (req, res, next) {
+
+
+        console.log(' res ---> ' , res )
+        console.log(' res ---> ' , res )
+        console.log(' res ---> ' , res )
+
+        // req.file is the `avatar` file
+        // req.body will hold the text fields, if there were any
+    })
+
+
+    // upload(req, res, function(err) {
+    //
+    //      console.log('uploading ... ', err)
+    //
+    //     if (err) {
+    //         return res.end("Something went wrong!");
+    //     }
+    //     return res.end("File uploaded sucessfully!.");
+    // });
+
+
+}
 
 module.exports = {
     getEquipos,
@@ -214,5 +262,6 @@ module.exports = {
     deleteEquipo,
     deleteAllEquipos,
     guardarDraft,
-    generarEquipos
+    generarEquipos,
+    uploadImg
 };

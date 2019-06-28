@@ -10,6 +10,12 @@ const TorneosCtrl = require('../controllers/torneos');
 const UtilitiesCtrl = require('../controllers/utils');
 const api = express.Router();
 
+const multer = require('multer');
+
+const http = require("http");
+const path = require("path");
+const fs = require("fs");
+
 // CORS
 api.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -61,6 +67,30 @@ api.put('/equipo/update/:equipoId', EquiposCtrl.updateEquipo);
 api.delete('/equipo/delete/:equipoId',EquiposCtrl.deleteEquipo);
 api.delete('/deleteAllEquipos',EquiposCtrl.deleteAllEquipos);
 api.get('/generarEquipos',EquiposCtrl.generarEquipos);
+
+
+
+var Storage = multer.diskStorage({
+    destination: function(req, file, callback) {
+        callback(null, "./img");
+    },
+    filename: function(req, file, callback) {
+        callback(null, 'nombre_ejemplo');
+    }
+});
+
+var upload = multer({
+    storage: Storage
+});
+
+
+api.post('/upload',upload.single('file'), function (req, res, next) {
+
+    console.log(' res ---> ' , res )
+    console.log(' res ---> ' , res )
+    console.log(' res ---> ' , res )
+
+})
 
 //Partidos
 api.post('/partido', PartidosCtrl.newPartido);
