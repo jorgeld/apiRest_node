@@ -5,6 +5,7 @@ const UserCtrl = require('../controllers/users');
 const MonkeysCtrl = require('../controllers/monkeys');
 const JugadoresCtrl = require('../controllers/jugadores');
 const EquiposCtrl = require('../controllers/equipos');
+const FederacionesCtrl = require('../controllers/federaciones');
 const PartidosCtrl = require('../controllers/partidos');
 const TorneosCtrl = require('../controllers/torneos');
 const UtilitiesCtrl = require('../controllers/utils');
@@ -68,7 +69,26 @@ api.delete('/equipo/delete/:equipoId',EquiposCtrl.deleteEquipo);
 api.delete('/deleteAllEquipos',EquiposCtrl.deleteAllEquipos);
 api.get('/generarEquipos',EquiposCtrl.generarEquipos);
 
+//Federaciones
+api.get('/generateFederaciones', FederacionesCtrl.generarEquipos);
+api.get('/federaciones', FederacionesCtrl.getFederaciones);
+api.get('/federaciones/detalle/:id', FederacionesCtrl.getFederacion);
+api.put('/federaciones/update/:id', FederacionesCtrl.rellenarPlantillaFederacion);
+api.put('/federaciones/actualizarCampeon/:id', FederacionesCtrl.actualizarCampeon);
 
+
+//Partidos
+api.post('/partido', PartidosCtrl.newPartido);
+api.get('/partidos', PartidosCtrl.getPartidos);
+api.get('/partido/:partidoId', PartidosCtrl.getPartido);
+api.put('/partido/update/:partidoId', PartidosCtrl.updateEquipo);
+api.delete('/partido/delete/:partidoId', PartidosCtrl.deletePartido);
+api.delete('/deleteAllPartidos', PartidosCtrl.deleteAllPartidos);
+
+//Torneos
+api.post('/torneo', TorneosCtrl.newTorneo);
+api.get('/torneos', TorneosCtrl.getTorneos);
+api.get('/deleteAllTorneos', TorneosCtrl.deleteAllTorneos);
 
 var Storage = multer.diskStorage({
     destination: function(req, file, callback) {
@@ -91,19 +111,6 @@ api.post('/upload',upload.single('file'), function (req, res, next) {
     console.log(' res ---> ' , res )
 
 })
-
-//Partidos
-api.post('/partido', PartidosCtrl.newPartido);
-api.get('/partidos', PartidosCtrl.getPartidos);
-api.get('/partido/:partidoId', PartidosCtrl.getPartido);
-api.put('/partido/update/:partidoId', PartidosCtrl.updateEquipo);
-api.delete('/partido/delete/:partidoId', PartidosCtrl.deletePartido);
-api.delete('/deleteAllPartidos', PartidosCtrl.deleteAllPartidos);
-
-//Torneos
-api.post('/torneo', TorneosCtrl.newTorneo);
-api.get('/torneos', TorneosCtrl.getTorneos);
-api.get('/deleteAllTorneos', TorneosCtrl.deleteAllTorneos);
 
 // http://localhost:3000/api/monkey/banana/
 
