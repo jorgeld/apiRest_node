@@ -75,6 +75,8 @@ api.get('/federaciones', FederacionesCtrl.getFederaciones);
 api.get('/federaciones/detalle/:id', FederacionesCtrl.getFederacion);
 api.put('/federaciones/update/:id', FederacionesCtrl.rellenarPlantillaFederacion);
 api.put('/federaciones/actualizarCampeon/:id', FederacionesCtrl.actualizarCampeon);
+api.put('/federaciones/actualizarSubcampeon/:id', FederacionesCtrl.actualizarSubcampeon);
+api.put('/federaciones/actualizarTercero/:id', FederacionesCtrl.actualizarTercero);
 
 
 //Partidos

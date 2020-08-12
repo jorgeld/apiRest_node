@@ -73,27 +73,6 @@ function generateFederaciones(req,res){
     });
 }
 
-function actualizarCampeon2(req,res){
-    let fedId = req.params.id;
-    let update = req.body;
-    let options = {};
-
-    // console.log(`UPDATE JUGADOR --> ID --> ${fedId}`);
-    // console.log(`UPDATE JUGADOR --> BODY -->`, req.body);
-
-    Federaciones.findOneAndUpdate(fedId,update,function(err,fedUpdate){
-        // fedUpdate.campeonActual = {nombre:'Test'};
-        if(err){
-            res.status(500).send({message : `Error al editar federación`});
-            res.status(400).send({message : `Error al editar federación`});
-        }else{
-            console.log(`--- UPDATE FEDERACIÓN--- ${new moment()} --->`);
-            res.status(200).send({Federaciones : fedUpdate})
-        }
-
-    })
-}
-
 function actualizarCampeon(req, res){
 
     let fedId = req.params.id;
@@ -103,11 +82,47 @@ function actualizarCampeon(req, res){
 
         if(err)return res.status(500).send({message:`****** Error al editar federación`});
 
-        Federaciones.update({campeonActual : update},function(err){
+        fed.update({campeonActual : update},function(err){
             if(err){
                 res.status(500).send({message : `****** Error al cambiar el campeón actual`});
             }
             res.status(200).send({campeonActual : update})
+        })
+    })
+}
+
+function actualizarSubcampeon(req, res){
+
+    let fedId = req.params.id;
+    let update = req.body;
+
+    Federaciones.findById(fedId,function(err,fed){
+
+        if(err)return res.status(500).send({message:`****** Error al editar federación`});
+
+        fed.update({subcampeon : update},function(err){
+            if(err){
+                res.status(500).send({message : `****** Error al cambiar el subcampeon actual`});
+            }
+            res.status(200).send({subcampeon : update})
+        })
+    })
+}
+
+function actualizarTercero(req, res){
+
+    let fedId = req.params.id;
+    let update = req.body;
+
+    Federaciones.findById(fedId,function(err,fed){
+
+        if(err)return res.status(500).send({message:`****** Error al editar federación`});
+
+        fed.update({tercero : update},function(err){
+            if(err){
+                res.status(500).send({message : `****** Error al cambiar el tercero actual`});
+            }
+            res.status(200).send({tercero : update})
         })
     })
 }
@@ -137,24 +152,6 @@ function rellenarPlantillaFederacion(req, res){
             res.status(200).send({equipos : fed})
         })
     })
-
-
-
-
-
-    // console.log('BODY ---> ' , req.body);
-    //
-    // Federaciones.findByIdAndUpdate(id,update,options,function (err, fedUpdate) {
-    //     if(err){
-    //         res.status(500).send({message : ` ****** Error al editar federación`})
-    //     }else if(!fedUpdate){
-    //         res.status(404).send({message : `******** Federacion no encontrada`})
-    //     }else{
-    //         res.status(200).send({message : `******** Federacion encontrada!! ${fedUpdate}`})
-    //     }
-    // })
-
-
 
 }
 
@@ -206,5 +203,7 @@ module.exports = {
     generateFederaciones,
     rellenarPlantillaFederacion,
     getFederacion,
-    actualizarCampeon
+    actualizarCampeon,
+    actualizarSubcampeon,
+    actualizarTercero
 };

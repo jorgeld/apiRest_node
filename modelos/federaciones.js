@@ -9,7 +9,9 @@ const FederacionesSchema = Schema({
     bandera: String,
     equipos: Array,
     signupDate : {type : String},
-    campeonActual : Object
+    campeonActual : Object,
+    subcampeon : Object,
+    tercero : Object,
 });
 
 module.exports = mongoose.model('federaciones', FederacionesSchema);

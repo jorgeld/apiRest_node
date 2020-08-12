@@ -157,7 +157,7 @@ function updateEquipo(req,res){
     console.log('BODY ---> ' , req.body)
 
     Equipo.findByIdAndUpdate(equipoId,update,options,function(err,equipoUpdate){
-        equipoUpdate.lastModified = moment().format('DD/MM/YYYY - HH:MM:SS');
+        // equipoUpdate.lastModified = moment().format('DD/MM/YYYY - HH:MM:SS');
         if(err){
             res.status(500).send({message : `Error al editar equipo`});
             res.status(400).send({message : `Error al editar equipo`});
