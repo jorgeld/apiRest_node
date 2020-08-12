@@ -82,12 +82,43 @@ function actualizarCampeon(req, res){
 
         if(err)return res.status(500).send({message:`****** Error al editar federación`});
 
-        fed.update({campeonActual : update},function(err){
-            if(err){
-                res.status(500).send({message : `****** Error al cambiar el campeón actual`});
+
+        //
+        // console.log('FEDERACIÓN ----> ' , fed);
+        for(let i = 0; i < fed.equipos.length; i++){
+            if(fed.equipos[i].nombre_corto == update.nombre_corto){
+                console.log(' ******* ACTUALIZAR PALMARÉS--------> ', update.nombre_corto);
+
+                //Aumentamos palmarés ...
+                var palmares;
+                if(fed.equipos[i].palmares) {
+                    palmares = fed.equipos[i].palmares;
+                    palmares.liga += 1;
+                    fed.equipos[i].palmares = palmares
+                }else{
+                    palmares = {liga:1}
+                    fed.equipos[i].palmares = palmares
+                }
+
+                fed.update({equipos : fed.equipos},function(err){
+                    if(err){
+                        res.status(500).send({message : `****** Error al modificar palmarés`});
+                    }
+
+                    fed.update({campeonActual : update},function(err){
+                        if(err){
+                            res.status(500).send({message : `****** Error al cambiar el campeón actual`});
+                        }
+                        res.status(200).send(`Actualizado el palmarés de ${update.nombre_corto}`)
+                    })
+                })
+
+
+
+
             }
-            res.status(200).send({campeonActual : update})
-        })
+        }
+
     })
 }
 
