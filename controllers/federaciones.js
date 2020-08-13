@@ -78,43 +78,180 @@ function actualizarCampeon(req, res){
     let fedId = req.params.id;
     let update = req.body;
 
-    Federaciones.findById(fedId,function(err,fed){
+    Federaciones.findById(fedId, function (err, fed) {
 
-        if(err)return res.status(500).send({message:`****** Error al editar federación`});
+        if (err) return res.status(500).send({message: `****** Error al editar federación`});
 
-
-        //
         // console.log('FEDERACIÓN ----> ' , fed);
-        for(let i = 0; i < fed.equipos.length; i++){
-            if(fed.equipos[i].nombre_corto == update.nombre_corto){
+        for (let i = 0; i < fed.equipos.length; i++) {
+            if (fed.equipos[i].nombre_corto == update.nombre_corto) {
                 console.log(' ******* ACTUALIZAR PALMARÉS--------> ', update.nombre_corto);
 
                 //Aumentamos palmarés ...
                 var palmares;
-                if(fed.equipos[i].palmares) {
+                if (fed.equipos[i].palmares) {
                     palmares = fed.equipos[i].palmares;
                     palmares.liga += 1;
                     fed.equipos[i].palmares = palmares
-                }else{
-                    palmares = {liga:1}
+                } else {
+                    palmares = {liga: 1}
                     fed.equipos[i].palmares = palmares
                 }
 
-                fed.update({equipos : fed.equipos},function(err){
-                    if(err){
-                        res.status(500).send({message : `****** Error al modificar palmarés`});
+                fed.update({equipos: fed.equipos}, function (err) {
+                    if (err) {
+                        res.status(500).send({message: `****** Error al modificar palmarés`});
                     }
 
-                    fed.update({campeonActual : update},function(err){
-                        if(err){
-                            res.status(500).send({message : `****** Error al cambiar el campeón actual`});
+                    fed.update({campeonActual: update}, function (err) {
+                        if (err) {
+                            res.status(500).send({message: `****** Error al cambiar el campeón actual`});
                         }
                         res.status(200).send(`Actualizado el palmarés de ${update.nombre_corto}`)
                     })
                 })
 
+            }
+        }
+    })
+}
 
+function palmaresCampeonNacional(req, res){
 
+    let campeon = req.body;
+
+    Federaciones.find({},function(err,federaciones){
+        if(err){return res.status(500).send({message:`Error al recoger federaciones`})}
+        if(!federaciones)return res.status(404).send({message:`No existen Federeciones`});
+        console.log(` **** Recogiendo listado de federaciones ${new moment()}`)
+
+        //Recorremos federaciones
+        for(let i = 0; i < federaciones.length; i++){
+
+            console.log(` ***** FED: ${federaciones[i].nombreCorto} ********* ${campeon.federacion.nombreCorto} ******************************** `)
+
+            if(federaciones[i].nombreCorto == campeon.federacion.nombreCorto){
+                console.log(` ******* federación a la que pertenece ----> ${federaciones[i].nombreCorto}`);
+
+                //Recorremos los equipos de la federación
+                for (let j = 0; j < federaciones[i].equipos.length; j++) {
+                    if (federaciones[i].equipos[j].nombre_corto == campeon.nombre_corto) {
+                        console.log(' ******* ACTUALIZAR PALMARÉS DE --------> : ', campeon.nombre_corto);
+
+                        //Aumentamos palmarés ...
+                        var palmares;
+                        if (federaciones[i].equipos[j].palmares) {
+                            palmares = federaciones[i].equipos[j].palmares;
+                            palmares.copa += 1;
+                            federaciones[i].equipos[j].palmares = palmares
+                        } else {
+                            palmares = {copa: 1}
+                            federaciones[i].equipos[j].palmares = palmares
+                        }
+
+                        federaciones[i].update({equipos: federaciones[i].equipos}, function (err) {
+                            if (err) {
+                                res.status(500).send({message: `****** Error al modificar palmarés`});
+                            }
+                            res.status(200).send(`Actualizado el palmarés de ${campeon.nombre_corto}`
+                            )
+                        })
+                    }
+                }
+
+            }
+        }
+
+    })
+}
+
+function palmaresCampeonRecopa(req, res){
+    let campeon = req.body;
+
+    Federaciones.find({},function(err,federaciones){
+        if(err){return res.status(500).send({message:`Error al recoger federaciones`})}
+        if(!federaciones)return res.status(404).send({message:`No existen Federeciones`});
+        console.log(` **** Recogiendo listado de federaciones ${new moment()}`)
+
+        //Recorremos federaciones
+        for(let i = 0; i < federaciones.length; i++){
+
+            console.log(` ***** FED: ${federaciones[i].nombreCorto} ********* ${campeon.federacion.nombreCorto} ******************************** `)
+
+            if(federaciones[i].nombreCorto == campeon.federacion.nombreCorto){
+                console.log(` ******* federación a la que pertenece ----> ${federaciones[i].nombreCorto}`);
+
+                //Recorremos los equipos de la federación
+                for (let j = 0; j < federaciones[i].equipos.length; j++) {
+                    if (federaciones[i].equipos[j].nombre_corto == campeon.nombre_corto) {
+                        console.log(' ******* ACTUALIZAR PALMARÉS DE --------> : ', campeon.nombre_corto);
+
+                        //Aumentamos palmarés ...
+                        var palmares;
+                        if (federaciones[i].equipos[j].palmares) {
+                            palmares = federaciones[i].equipos[j].palmares;
+                            palmares.recopa += 1;
+                            federaciones[i].equipos[j].palmares = palmares
+                        } else {
+                            palmares = {recopa: 1}
+                            federaciones[i].equipos[j].palmares = palmares
+                        }
+
+                        federaciones[i].update({equipos: federaciones[i].equipos}, function (err) {
+                            if (err) {
+                                res.status(500).send({message: `****** Error al modificar palmarés`});
+                            }
+                            res.status(200).send(`Actualizado el palmarés de ${campeon.nombre_corto}`
+                            )
+                        })
+                    }
+                }
+
+            }
+        }
+
+    })
+}
+
+function palmaresCampeonFerias(req, res){
+    Federaciones.find({},function(err,federaciones){
+        if(err){return res.status(500).send({message:`Error al recoger federaciones`})}
+        if(!federaciones)return res.status(404).send({message:`No existen Federeciones`});
+        console.log(` **** Recogiendo listado de federaciones ${new moment()}`)
+
+        //Recorremos federaciones
+        for(let i = 0; i < federaciones.length; i++){
+
+            console.log(` ***** FED: ${federaciones[i].nombreCorto} ********* ${campeon.federacion.nombreCorto} ******************************** `)
+
+            if(federaciones[i].nombreCorto == campeon.federacion.nombreCorto){
+                console.log(` ******* federación a la que pertenece ----> ${federaciones[i].nombreCorto}`);
+
+                //Recorremos los equipos de la federación
+                for (let j = 0; j < federaciones[i].equipos.length; j++) {
+                    if (federaciones[i].equipos[j].nombre_corto == campeon.nombre_corto) {
+                        console.log(' ******* ACTUALIZAR PALMARÉS DE --------> : ', campeon.nombre_corto);
+
+                        //Aumentamos palmarés ...
+                        var palmares;
+                        if (federaciones[i].equipos[j].palmares) {
+                            palmares = federaciones[i].equipos[j].palmares;
+                            palmares.ferias += 1;
+                            federaciones[i].equipos[j].palmares = palmares
+                        } else {
+                            palmares = {ferias: 1}
+                            federaciones[i].equipos[j].palmares = palmares
+                        }
+
+                        federaciones[i].update({equipos: federaciones[i].equipos}, function (err) {
+                            if (err) {
+                                res.status(500).send({message: `****** Error al modificar palmarés`});
+                            }
+                            res.status(200).send(`Actualizado el palmarés de ${campeon.nombre_corto}`
+                            )
+                        })
+                    }
+                }
 
             }
         }
@@ -236,5 +373,8 @@ module.exports = {
     getFederacion,
     actualizarCampeon,
     actualizarSubcampeon,
-    actualizarTercero
+    actualizarTercero,
+    palmaresCampeonNacional,
+    palmaresCampeonRecopa,
+    palmaresCampeonFerias,
 };

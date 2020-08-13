@@ -78,6 +78,10 @@ api.put('/federaciones/actualizarCampeon/:id', FederacionesCtrl.actualizarCampeo
 api.put('/federaciones/actualizarSubcampeon/:id', FederacionesCtrl.actualizarSubcampeon);
 api.put('/federaciones/actualizarTercero/:id', FederacionesCtrl.actualizarTercero);
 
+api.put('/federaciones/campeonNacional', FederacionesCtrl.palmaresCampeonNacional);
+api.put('/federaciones/campeonRecopa', FederacionesCtrl.palmaresCampeonRecopa);
+api.put('/federaciones/campeonFerias', FederacionesCtrl.palmaresCampeonFerias);
+
 
 //Partidos
 api.post('/partido', PartidosCtrl.newPartido);
