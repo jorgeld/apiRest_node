@@ -16,7 +16,7 @@ const express = require('express')
 const app = express();
 
 
-
+//Devuelve listado con todos los equipos
 function getEquipos(req, res){
     Equipo.find({},function(err,equipos){
         if(err){return res.status(500).send({message:`Error al realizar la petición`})}
@@ -26,6 +26,7 @@ function getEquipos(req, res){
     })
 }
 
+//Devuelve un equipo a través de su equipoId
 function getEquipo(req, res){
     let equipoId = req.params.equipoId;
     Equipo.findById(equipoId,function(err,equipo){
@@ -35,6 +36,7 @@ function getEquipo(req, res){
     })
 }
 
+//Devuelve un array con los jugadores pertenecientes a un equipo.
 function getEquipoPlayers(req, res){
     let equipoId = req.params.equipoId;
     Equipo.findById(equipoId,function(err,equipo){
@@ -44,6 +46,7 @@ function getEquipoPlayers(req, res){
     })
 }
 
+// Creación de nuevo equipo
 function newEquipo(req , res){
     let equipo = new Equipo();
 
@@ -57,6 +60,7 @@ function newEquipo(req , res){
     equipo.save(function (err, equipoStored) {
         if(err){
             res.status(500).send({message : `Error al salvar en la base de datos ----> ${err}` })
+
         }
         console.log(`--- NEW EQUIPO--- ${new moment()} --->`);
         res.status(200).send({equipo: equipoStored})
@@ -65,14 +69,16 @@ function newEquipo(req , res){
 
 function guardarDraft(req,res){
 
-
-
+    //Recorremos equipos
     async.map(req.body,(equipo)=>{
         console.log('Equipo -> ',equipo.name);
+        //Recorremos jugadores del equipo
         async.map(equipo.jugadores,(jugador)=>{
             var jugadorToUpdate = {};
                 jugadorToUpdate = Object.assign(jugadorToUpdate, jugador);
+                //Borramos propiedad _id del jugador ?¿?¿WHY?¿¿
                 delete jugadorToUpdate._id;
+                //Actualizamos cambios en jugador
                 Jugador.findOneAndUpdate(jugador.jugadorId,jugadorToUpdate,function(err,jugadorUpdate){
                     if(err){
                         console.log('error ------>' , err)
@@ -140,16 +146,18 @@ function guardarDraft(req,res){
     // console.log('Cuerpo de la llamada -----> ', req.body);
 }
 
+// Actualización de equipo
 function updateEquipo(req,res){
 
     let equipoId = req.params.equipoId;
     let update = req.body;
     let options = {};
 
-    console.log(' TIPO DATO -----_> ' , typeof equipoId);
+
+    console.log('BODY ---> ' , req.body)
 
     Equipo.findByIdAndUpdate(equipoId,update,options,function(err,equipoUpdate){
-        equipoUpdate.lastModified = moment().format('DD/MM/YYYY - HH:MM:SS');
+        // equipoUpdate.lastModified = moment().format('DD/MM/YYYY - HH:MM:SS');
         if(err){
             res.status(500).send({message : `Error al editar equipo`});
             res.status(400).send({message : `Error al editar equipo`});
@@ -164,6 +172,7 @@ function updateEquipo(req,res){
 
 }
 
+//Borrado de un equipo especifico
 function deleteEquipo(req, res){
     let equipoId = req.params.equipoId;
 
@@ -181,6 +190,7 @@ function deleteEquipo(req, res){
     })
 }
 
+//Generamos listado de equipos
 function generarEquipos(req, res){
 
     console.log(`Llamando a generarEquipos()`);
@@ -194,9 +204,9 @@ function generarEquipos(req, res){
         console.log(` **** Generados nuevos equipos--- ${new moment()} --->`);
         res.status(200).send({message : 'Equipos generados correctamente correctamente'})
     });
-
 }
 
+//Borramos todos los equipos
 function deleteAllEquipos(req, res){
 
     // El objeto vacio recoge todos los elementos de la colección
@@ -209,6 +219,7 @@ function deleteAllEquipos(req, res){
         }
     });
 }
+
 
 function uploadImg(req, res){
 
