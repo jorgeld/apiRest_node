@@ -301,26 +301,30 @@ function rellenarPlantillaFederacion(req, res){
 
         if(err)return res.status(500).send({message:`****** Error al editar federación`});
 
-        let equipos  = fed.equipos;
+        generamosJugadoresEquipo(fed);
 
-        console.log(`--- equipos ----> ${equipos}`);
+        res.status(200).send({message:`****** Federación encontrada`});
 
-        for(let i = 0; i < equipos.length; i++){
-            equipos[i].jugadores = generateJugadoresFederaciones()
-            // console.log(`---> equipos ---> ${generateJugadoresFederaciones()}`)
+    })
 
-        }
+}
 
-        // res.status(200).send({message:`****** Federación encontrada`})
 
-        Federaciones.update({equipos : equipos},function(err){
+
+async function generamosJugadoresEquipo(fed){
+    let equipos  = fed.equipos;
+
+    console.log(`--- equipos de federación ----> ${equipos.length}`);
+
+    for(let i = 0; i < equipos.length; i++){
+        equipos[i].jugadores = generateJugadoresFederaciones();
+        console.log(` -- Equipo --> ${equipos[i].name}`);
+        await fed.update({equipos : equipos},function(err){
             if(err){
                 res.status(500).send({message : `****** Error al editar federación`});
             }
-            res.status(200).send({equipos : fed})
         })
-    })
-
+    }
 }
 
 //Genera jugador

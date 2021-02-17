@@ -82,7 +82,6 @@ api.put('/federaciones/campeonNacional', FederacionesCtrl.palmaresCampeonNaciona
 api.put('/federaciones/campeonRecopa', FederacionesCtrl.palmaresCampeonRecopa);
 api.put('/federaciones/campeonFerias', FederacionesCtrl.palmaresCampeonFerias);
 
-
 //Partidos
 api.post('/partido', PartidosCtrl.newPartido);
 api.get('/partidos', PartidosCtrl.getPartidos);
@@ -115,7 +114,6 @@ api.post('/upload',upload.single('file'), function (req, res, next) {
     console.log(' res ---> ' , res )
     console.log(' res ---> ' , res )
     console.log(' res ---> ' , res )
-
 })
 
 // http://localhost:3000/api/monkey/banana/
