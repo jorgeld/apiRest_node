@@ -5,72 +5,19 @@ const Jugador = require('../modelos/jugadores');
 const EquiposFederacion = require('../modelos/equiposFederacion');
 const moment = require('moment');
 const constantes = require('../constantes');
-
-
 const express = require('express');
 const app = express();
-
-
-async function rellenamosEquipos(equiposfede){
-
-    let equiposfed = equiposfede;
-
-    for(let i = 0; i < equiposfed.length; i++){
-        await getIdFed(equiposfed[i].federacion)
-            .then((res)=>{
-                equiposfed[i].idFed = res._id;
-                equiposfed[i].jugadores = generateJugadoresFederaciones();
-            });
-    }
-
-    return equiposfed;
-}
-
-async function insertEquiposFed(equipos){
-    await EquiposFederacion.insertMany(equipos,(err, doc)=>{
-        if(err){return res.status(500).send({message:`Error al realizar la petición`})}
-    });
-}
 
 function generarEquiposFederacion(req,res){
 
     let equiposfed = constantes.equiposFed;
 
-    rellenamosEquipos(equiposfed)
+    //Añadimos el id de la federacion y los jugadors
+    addAtributosEquipos(equiposfed)
         .then((res)=>{
-
-            console.log(res);
-
+            //Insertamos ne BBDD
             insertEquiposFed(res)
-
-            //Insertamos los equipos en BBDD
-            // EquiposFederacion.insertMany(res,(err, doc)=>{
-            //     if(err){return res.status(500).send({message:`Error al realizar la petición`})}
-            // });
         });
-
-    //res.status(200).send(`Generados los equipos federativos correctamente`)
-
-    // addInfoFedToEquipo(equiposfed);
-
-    // //Añadimos jugadores a cada uno de los equipos
-    // for(let i = 0; i < equiposfed.length; i++){
-    //
-    //     let fedId = getIdFed(equiposfed[i].federacion)
-    //         .then((res)=>{
-    //             equiposfed[i].idFed = res._id;
-    //             equiposfed[i].jugadores = generateJugadoresFederaciones();
-    //         });
-    //
-    //     // equiposfed[i].jugadores = generateJugadoresFederaciones();
-    // }
-
-
-}
-
-async function getIdFed(fed){
-  let id = await Federaciones.findOne({ nombreCorto: fed},'_id').exec();
-  return id;
 }
 
 function generateFederaciones(req,res){
@@ -83,7 +30,6 @@ function generateFederaciones(req,res){
 
     res.status(200).send(`Generadas las federaciones correctamente`)
 };
-
 
 // //Generamos listado de equipos
 function generarEquipos(req, res){
@@ -176,26 +122,6 @@ function getFederacion(req,res){
         res.status(200).send({fed})
     })
 }
-
-// function generateFederaciones(req,res){
-//     let fed = constantes.federaciones;
-//
-//     console.log(` ************ GENERANDO FEDERACIONES ******* `);
-//     console.log(fed);
-//
-//     // Añadimos jugadores a plantilla
-//     for(let f = 0; f < fed.length; f++){
-//         fed[f].equipos = generateEquiposFederaciones();
-//     }
-//
-//     Federaciones.insertMany(fed,function(err,docs){
-//         if(err){
-//             res.status(500).send({message : `Error al salvar en la base de datos ----> ${err}` })
-//         }
-//         console.log(` **** Generados nuevos equipos--- ${new moment()} --->`);
-//         res.status(200).send({message : 'Federaciones generadas correctamente correctamente'})
-//     });
-// }
 
 function actualizarCampeon(req, res){
 
@@ -430,64 +356,6 @@ function rellenarPlantillaFederacion(req, res){
         res.status(200).send({message:`****** Federación encontrada`});
 
     })
-
-}
-
-async function generamosJugadoresEquipo(fed){
-    let equipos  = fed.equipos;
-
-    console.log(`--- equipos de federación ----> ${equipos.length}`);
-
-    for(let i = 0; i < equipos.length; i++){
-        equipos[i].jugadores = generateJugadoresFederaciones();
-        console.log(` -- Equipo --> ${equipos[i].name}`);
-        await fed.update({equipos : equipos},function(err,res){
-            if(err){
-                res.status(500).send({message : `****** Error al editar federación`});
-            }
-        })
-    }
-}
-
-async function addInfoFedToEquipo(equiposFed){
-
-    let _equiposFed = equiposFed;
-
-    //Añadimos jugadores a cada uno de los equipos
-    for(let i = 0; i < _equiposFed.length; i++){
-
-        _equiposFed[i].idFed = await getIdFederacion(_equiposFed[i].federacion);
-
-        console.log(_equiposFed[i]);
-
-        // Federaciones.findOne({ nombreCorto: equiposfed[i].federacion},(err, federacion)=>{
-        //     equiposfed[i].idFed = (federacion._id);
-        // });
-
-
-        // //Recogemos el identificador de la federacion
-        // Federaciones.findOne({ nombreCorto: equiposfed[i].federacion},(err, federacion)=>{
-        //     equiposfed[i].idFed  =  federacion._id;
-        // });
-
-
-        // equiposfed[i].jugadores = generateJugadoresFederaciones();
-    }
-
-
-
-
-}
-
-async function getIdFederacion(req){
-
-    Federaciones.findOne({ nombreCorto: req},'_id',(err, res)=>{
-        if(err){'Error al pillar id'}
-
-        console.log(res);
-       return res;
-    });
-
 }
 
 //Genera jugador
@@ -529,6 +397,51 @@ function generateJugadoresFederaciones(){
         }
     }
     return jugadores;
+}
+
+async function generamosJugadoresEquipo(fed){
+    let equipos  = fed.equipos;
+
+    console.log(`--- equipos de federación ----> ${equipos.length}`);
+
+    for(let i = 0; i < equipos.length; i++){
+        equipos[i].jugadores = generateJugadoresFederaciones();
+        console.log(` -- Equipo --> ${equipos[i].name}`);
+        await fed.update({equipos : equipos},function(err,res){
+            if(err){
+                res.status(500).send({message : `****** Error al editar federación`});
+            }
+        })
+    }
+}
+
+//Añade el id de la federacion y lo jugadores a cada uno de los equipos
+async function addAtributosEquipos(equiposfede){
+
+    let equiposfed = equiposfede;
+
+    for(let i = 0; i < equiposfed.length; i++){
+        //Recogemos el id de cada federacion
+        await getIdFed(equiposfed[i].federacion)
+            .then((res)=>{
+                equiposfed[i].idFed = res._id;
+                equiposfed[i].jugadores = generateJugadoresFederaciones();
+            });
+    }
+    return equiposfed;
+}
+
+//inserta los equipos en la bbdd
+async function insertEquiposFed(equipos){
+    await EquiposFederacion.insertMany(equipos,(err, doc)=>{
+        if(err){return res.status(500).send({message:`Error al realizar la petición`})}
+    });
+}
+
+//Recoge el id de la federacion
+async function getIdFed(fed){
+    let id = await Federaciones.findOne({ nombreCorto: fed},'_id').exec();
+    return id;
 }
 
 module.exports = {
