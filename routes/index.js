@@ -73,7 +73,7 @@ api.get('/generarEquipos',EquiposCtrl.generarEquipos);
 api.get('/generateFederaciones', FederacionesCtrl.generateFederaciones);
 api.get('/generateEquiposFederacion', FederacionesCtrl.generarEquiposFederacion);
 api.get('/federaciones', FederacionesCtrl.getFederaciones);
-api.get('/federaciones/equipos/:federacionName', FederacionesCtrl.getEquiposFederacion);
+api.put('/federaciones/equipos', FederacionesCtrl.getEquiposFederacion);
 api.get('/federaciones/detalle/:id', FederacionesCtrl.getFederacion);
 api.put('/federaciones/update/:id', FederacionesCtrl.rellenarPlantillaFederacion);
 api.put('/federaciones/actualizarCampeon/:id', FederacionesCtrl.actualizarCampeon);

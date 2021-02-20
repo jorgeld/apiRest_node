@@ -18,6 +18,8 @@ function generarEquiposFederacion(req,res){
             //Insertamos ne BBDD
             insertEquiposFed(res)
         });
+
+    res.status(200).send('ok')
 }
 
 function generateFederaciones(req,res){
@@ -93,15 +95,10 @@ function generarEquipos(req, res){
 
 function getEquiposFederacion(req,res){
 
-    let fed = req.param.federacionName;
-
-    EquiposFederacion.findOne({ federacion: fed},(err, federacion)=>{
-        console.log(federacion);
-
+    EquiposFederacion.find({federacion:req.body.nombreCorto},(err, federacion)=>{
+        console.log(` ++++++ Recogemos equipos federativos ${req.body.nombreCorto} ++++++`);
         res.status(200).send(federacion)
-
     });
-
 
 }
 

@@ -9,11 +9,10 @@ const EquipoFederacionSchema = Schema({
     bandera: String,
     escudo: String,
     federacion: String,
-    idFed:String,
+    idFed:Object,
     jugadores: Array,
     palmares : Object,
     ligas : Number,
     signupDate : {type : String}
 });
-
 module.exports = mongoose.model('Equiposfederacion', EquipoFederacionSchema);
