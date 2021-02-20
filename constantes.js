@@ -131,751 +131,748 @@ module.exports = {
             escudo:'ANR.png'
         }
     ],
-    federaciones : [
-        {
-            nombre : 'Andalucia',
-            nombreCorto : 'AND',
-            equipos : [
+
+    equiposFed : [
                 {
+                    federacion:'AND',
                     name : 'Almeria',
                     nombre_corto : 'ALM',
                     bandera : 'ALM-min.png',
                 },
                 {
+                    federacion:'AND',
                     name : 'Cadiz',
                     nombre_corto : 'CAD',
                     bandera : 'CAD-min.png',
                 },
                 {
+                    federacion:'AND',
                     name : 'Cordoba',
                     nombre_corto : 'COR',
                     bandera : 'COR-min.png',
                 },
                 {
+                    federacion:'AND',
                     name : 'Granada',
                     nombre_corto : 'GRA',
                     bandera : 'GRA-min.png',
                 },
                 {
+                    federacion:'AND',
                     name : 'Huelva',
                     nombre_corto : 'HUE',
                     bandera : 'HUE-min.png',
                 },
                 {
+                    federacion:'AND',
                     name : 'Jaén',
                     nombre_corto : 'JAE',
                     bandera : 'JAE-min.png',
                 },
                 {
+                    federacion:'AND',
                     name : 'Málaga',
                     nombre_corto : 'MAL',
                     bandera : 'MAL-min.png',
                 },
                 {
+                    federacion:'AND',
                     name : 'Sevilla',
                     nombre_corto : 'SEV',
                     bandera : 'SEV-min.png',
                 },
-            ]
-        },
-        {
-            nombre : 'Aragón',
-            nombreCorto : 'ARG',
-            equipos: [
                 {
-                    name : 'Zaragoza',
-                    nombre_corto : 'ZAR',
-                    bandera : 'ZAR-min.png',
-                },
-                {
-                    name : 'Huesca',
-                    nombre_corto : 'HUE',
-                    bandera : 'HUE-min.png',
-                },
-                {
-                    name : 'Teruel',
-                    nombre_corto : 'TER',
-                    bandera : 'TER-min.png',
-                },
-                {
-                    name : 'Calatayud',
-                    nombre_corto : 'CAL',
-                    bandera : 'CAL-min.png',
-                },
-                {
-                    name : 'Barbastro',
-                    nombre_corto : 'BAR',
-                    bandera : 'BAR-min.png',
-                },
-                {
-                    name : 'Alcañiz',
-                    nombre_corto : 'ALC',
-                    bandera : 'ALC-min.png',
-                },
-                {
-                    name : 'Jaca',
-                    nombre_corto : 'JAC',
-                    bandera : 'JAC-min.png',
-                },
-                {
-                    name : 'Tarazona',
-                    nombre_corto : 'TAR',
-                    bandera : 'TAR-min.png',
-                }
-            ]
-        },
-        {
-            nombre : 'Cantabria',
-            nombreCorto : 'CNT',
-            equipos: [
-                {
-                    name : 'Santander',
-                    nombre_corto : 'SNT',
-                    bandera : 'SNT-min.png',
-                },
-                {
-                    name : 'Torrelavega',
-                    nombre_corto : 'TOR',
-                    bandera : 'TOR-min.png',
-                },
-                {
-                    name : 'Castro Urdiales',
-                    nombre_corto : 'CAS',
-                    bandera : 'CAS-min.png',
-                },
-                {
-                    name : 'Laredo',
-                    nombre_corto : 'LAR',
-                    bandera : 'LAR-min.png',
-                },
-                {
-                    name : 'Suances',
-                    nombre_corto : 'SUA',
-                    bandera : 'SUA-min.png',
-                },
-                {
-                    name : 'San Vicente de la Barquera',
-                    nombre_corto : 'VIC',
-                    bandera : 'VIC-min.png',
-                },
-                {
-                    name : 'Santillana del Mar',
-                    nombre_corto : 'SLL',
-                    bandera : 'SLL-min.png',
-                },
-                {
-                    name : 'Comillas',
-                    nombre_corto : 'CLL',
-                    bandera : 'CLL-min.png',
-                },
-            ]
-        },
-        {
-            nombre : 'Castilla y León',
-            nombreCorto : 'CLE',
-            equipos: [
-                {
+                    federacion: 'CLE',
                     name : 'Valladolid',
                     nombre_corto : 'VAL',
                     bandera : 'VAL-min.png',
                 },
                 {
+                    federacion: 'CLE',
                     name : 'Burgos',
                     nombre_corto : 'BUR',
                     bandera : 'BUR-min.png',
                 },
                 {
+                    federacion: 'CLE',
                     name : 'Salamanca',
                     nombre_corto : 'SAL',
                     bandera : 'SAL-min.png',
                 },
                 {
+                    federacion: 'CLE',
                     name : 'León',
                     nombre_corto : 'LEO',
                     bandera : 'LEO-min.png',
                 },
                 {
+                    federacion: 'CLE',
                     name : 'Palencia',
                     nombre_corto : 'PAL',
                     bandera : 'PAL-min.png',
                 },
                 {
+                    federacion: 'CLE',
                     name : 'Ponferrada',
                     nombre_corto : 'PON',
                     bandera : 'PON-min.png',
                 },
                 {
+                    federacion: 'CLE',
                     name : 'Zamora',
                     nombre_corto : 'ZAM',
                     bandera : 'ZAM-min.png',
                 },
                 {
+                    federacion: 'CLE',
                     name : 'Ávila',
                     nombre_corto : 'AVI',
                     bandera : 'AVI-min.png',
                 },
-            ]
-        },
-        {
-            nombre : 'Castilla-La Mancha',
-            nombreCorto : 'CLM',
-            equipos: [
                 {
+                    federacion:'CLM',
                     name : 'Albacete',
                     nombre_corto : 'ALB',
                     bandera : 'ALB-min.png',
                 },
                 {
+                    federacion:'CLM',
                     name : 'Guadalajara',
                     nombre_corto : 'GUA',
                     bandera : 'GUA-min.png',
                 },
                 {
+                    federacion:'CLM',
                     name : 'Toledo',
                     nombre_corto : 'TOL',
                     bandera : 'TOL-min.png',
                 },
                 {
+                    federacion:'CLM',
                     name : 'Talavera de la Reina',
                     nombre_corto : 'TAL',
                     bandera : 'TAL-min.png',
                 },
                 {
+                    federacion:'CLM',
                     name : 'Ciudad Real',
                     nombre_corto : 'CIU',
                     bandera : 'CIU-min.png',
                 },
                 {
+                    federacion:'CLM',
                     name : 'Cuenca',
                     nombre_corto : 'CUE',
                     bandera : 'CUE-min.png',
                 },
                 {
+                    federacion:'CLM',
                     name : 'Puertollano',
                     nombre_corto : 'PUE',
                     bandera : 'PUE-min.png',
                 },
                 {
+                    federacion:'CLM',
                     name : 'Azuqueca de Henares',
                     nombre_corto : 'AZU',
                     bandera : 'AZU-min.png',
                 },
-            ]
-        },
-        {
-            nombre : 'Cataluña',
-            nombreCorto : 'CAT',
-            equipos: [
                 {
+                    federacion:'CAT',
                     name : 'Barcelona',
                     nombre_corto : 'BAR',
                     bandera : 'BAR-min.png',
                 },
                 {
+                    federacion:'CAT',
                     name : 'Hospitalet de Llobregat',
                     nombre_corto : 'HOS',
                     bandera : 'HOS-min.png',
                 },
                 {
+                    federacion:'CAT',
                     name : 'Tarrasa',
                     nombre_corto : 'TRR',
                     bandera : 'TRR-min.png',
                 },
                 {
+                    federacion:'CAT',
                     name : 'Badalona',
                     nombre_corto : 'BAD',
                     bandera : 'BAD-min.png',
                 },
                 {
+                    federacion:'CAT',
                     name : 'Sabadell',
                     nombre_corto : 'SAB',
                     bandera : 'SAB-min.png',
                 },
                 {
+                    federacion:'CAT',
                     name : 'Lleida',
                     nombre_corto : 'LLE',
                     bandera : 'LLE-min.png',
                 },
                 {
+                    federacion:'CAT',
                     name : 'Tarragona',
                     nombre_corto : 'TAR',
                     bandera : 'TAR-min.png',
                 },
                 {
+                    federacion:'CAT',
                     name : 'Mataró',
                     nombre_corto : 'MAT',
                     bandera : 'MAT-min.png',
                 },
-            ]
-        },
-        {
-            nombre : 'Comunidad Valenciana',
-            nombreCorto : 'VAL',
-            equipos: [
                 {
+                    federacion:'VAL',
                     name : 'Valencia',
                     nombre_corto : 'VAL',
                     bandera : 'VAL-min.png',
                 },
                 {
+                    federacion:'VAL',
                     name : 'Alicante',
                     nombre_corto : 'ALI',
                     bandera : 'ALI-min.png',
                 },
                 {
+                    federacion:'VAL',
                     name : 'Elche',
                     nombre_corto : 'ELC',
                     bandera : 'ELC-min.png',
                 },
                 {
+                    federacion:'VAL',
                     name : 'Castellón de la Plana',
                     nombre_corto : 'CAS',
                     bandera : 'CAS-min.png',
                 },
                 {
+                    federacion:'VAL',
                     name : 'Torrevieja',
                     nombre_corto : 'TOR',
                     bandera : 'TOR-min.png',
                 },
                 {
+                    federacion:'VAL',
                     name : 'Orihuela',
                     nombre_corto : 'ORI',
                     bandera : 'ORI-min.png',
                 },
                 {
+                    federacion:'VAL',
                     name : 'Torrente',
                     nombre_corto : 'TRR',
                     bandera : 'TRR-min.png',
                 },
                 {
+                    federacion:'VAL',
                     name : 'Bedidorm',
                     nombre_corto : 'BED',
                     bandera : 'BED-min.png',
                 },
-            ]
-        },
-        {
-            nombre : 'Comunidad de Madrid',
-            nombreCorto : 'MAD',
-            equipos: [
                 {
+                    federacion:'MAD',
                     name : 'Madrid',
                     nombre_corto : 'MAD',
                     bandera : 'MAD-min.png',
                 },
                 {
+                    federacion:'MAD',
                     name : 'Móstoles',
                     nombre_corto : 'MOS',
                     bandera : 'MOS-min.png',
                 },
                 {
+                    federacion:'MAD',
                     name : 'Fuenlabrada',
                     nombre_corto : 'FUE',
                     bandera : 'FUE-min.png',
                 },
                 {
+                    federacion:'MAD',
                     name : 'Alcalá de Henares',
                     nombre_corto : 'AHE',
                     bandera : 'AHE-min.png',
                 },
                 {
+                    federacion:'MAD',
                     name : 'Leganés',
                     nombre_corto : 'LEG',
                     bandera : 'LEG-min.png',
                 },
                 {
+                    federacion:'MAD',
                     name : 'Getafe',
                     nombre_corto : 'GET',
                     bandera : 'GET-min.png',
                 },
                 {
+                    federacion:'MAD',
                     name : 'Alcorcón',
                     nombre_corto : 'ALC',
                     bandera : 'ALC-min.png',
                 },
                 {
+                    federacion:'MAD',
                     name : 'Torrejón de Ardoz',
                     nombre_corto : 'TOR',
                     bandera : 'TOR-min.png',
                 },
-            ]
-        },
-        {
-            nombre : 'Extremadura',
-            nombreCorto : 'EXT',
-            equipos: [
                 {
+                    federacion:'EXT',
                     name : 'Badajoz',
                     nombre_corto : 'BAD',
                     bandera : 'BAD-min.png',
                 },
                 {
+                    federacion:'EXT',
                     name : 'Cáceres',
                     nombre_corto : 'CAC',
                     bandera : 'CAC-min.png',
                 },
                 {
+                    federacion:'EXT',
                     name : 'Mérida',
                     nombre_corto : 'MED',
                     bandera : 'MED-min.png',
                 },
                 {
+                    federacion:'EXT',
                     name : 'Plasencia',
                     nombre_corto : 'PLA',
                     bandera : 'PLA-min.png',
                 },
                 {
+                    federacion:'EXT',
                     name : 'Don Benito',
                     nombre_corto : 'DBE',
                     bandera : 'DBE-min.png',
                 },
                 {
+                    federacion:'EXT',
                     name : 'Almendralejo',
                     nombre_corto : 'ALM',
                     bandera : 'ALM-min.png',
                 },
                 {
+                    federacion:'EXT',
                     name : 'Villanueva de la Serena',
                     nombre_corto : 'VIL',
                     bandera : 'VIL-min.png',
                 },
                 {
+                    federacion:'EXT',
                     name : 'Navalmoral de la Mata',
                     nombre_corto : 'NAV',
                     bandera : 'NAV-min.png',
                 },
-
-            ]
-        },
-        {
-            nombre : 'Galicia',
-            nombreCorto : 'GAL',
-            equipos: [
                 {
+                    federacion:'GAL',
                     name : 'Vigo',
                     nombre_corto : 'VIG',
                     bandera : 'VIG-min.png',
                 },
                 {
+                    federacion:'GAL',
                     name : 'La Coruña',
                     nombre_corto : 'LCO',
                     bandera : 'LCO-min.png',
                 },
                 {
+                    federacion:'GAL',
                     name : 'Orense',
                     nombre_corto : 'ORE',
                     bandera : 'ORE-min.png',
                 },
                 {
+                    federacion:'GAL',
                     name : 'Lugo',
                     nombre_corto : 'LUG',
                     bandera : 'LUG-min.png',
                 },
                 {
+                    federacion:'GAL',
                     name : 'Santiago de Compostela',
                     nombre_corto : 'SAN',
                     bandera : 'SAN-min.png',
                 },
                 {
+                    federacion:'GAL',
                     name : 'Pontevedra',
                     nombre_corto : 'PON',
                     bandera : 'PON-min.png',
                 },
                 {
+                    federacion:'GAL',
                     name : 'Ferrol',
                     nombre_corto : 'FER',
                     bandera : 'FER-min.png',
                 },
                 {
+                    federacion:'GAL',
                     name : 'Narón',
                     nombre_corto : 'NAR',
                     bandera : 'NAR-min.png',
                 },
-
-            ]
-        },
-        {
-            nombre : 'Islas Baleares',
-            nombreCorto : 'BAL',
-            equipos: [
                 {
+                    federacion:'BAL',
                     name : 'Palma de Mallorca',
                     nombre_corto : 'PMA',
                     bandera : 'PMA-min.png',
                 },
                 {
+                    federacion:'BAL',
                     name : 'Calvía',
                     nombre_corto : 'CAL',
                     bandera : 'CAL-min.png',
                 },
                 {
+                    federacion:'BAL',
                     name : 'Ibiza',
                     nombre_corto : 'IBI',
                     bandera : 'IBI-min.png',
                 },
                 {
+                    federacion:'BAL',
                     name : 'Manacor',
                     nombre_corto : 'MAN',
                     bandera : 'MAN-min.png',
                 },
                 {
+                    federacion:'BAL',
                     name : 'Santa Eulalia',
                     nombre_corto : 'SEU',
                     bandera : 'SEU-min.png',
                 },
                 {
+                    federacion:'BAL',
                     name : 'Mahón',
                     nombre_corto : 'MAH',
                     bandera : 'MAH-min.png',
                 },
                 {
+                    federacion:'BAL',
                     name : 'Lluchmayor',
                     nombre_corto : 'LLU',
                     bandera : 'LLU-min.png',
                 },
                 {
+                    federacion:'BAL',
                     name : 'Inca',
                     nombre_corto : 'INC',
                     bandera : 'INC-min.png',
                 },
-
-            ]
-        },
-        {
-            nombre : 'La Rioja',
-            nombreCorto : 'RJA',
-            equipos: [
                 {
+                    federacion:'RJA',
                     name : 'Logroño',
                     nombre_corto : 'LOG',
                     bandera : 'LOG-min.png',
                 },
                 {
+                    federacion:'RJA',
                     name : 'Calahorra',
                     nombre_corto : 'CAL',
                     bandera : 'CAL-min.png',
                 },
                 {
+                    federacion:'RJA',
                     name : 'Arnedo',
                     nombre_corto : 'ARN',
                     bandera : 'CAL-min.png',
                 },
                 {
+                    federacion:'RJA',
                     name : 'Haro',
                     nombre_corto : 'HAR',
                     bandera : 'HAR-min.png',
                 },
                 {
+                    federacion:'RJA',
                     name : 'Alfaro',
                     nombre_corto : 'ALF',
                     bandera : 'ALF-min.png',
                 },
                 {
+                    federacion:'RJA',
                     name : 'Nájera',
                     nombre_corto : 'NAJ',
                     bandera : 'NAJ-min.png',
                 },
                 {
+                    federacion:'RJA',
                     name : 'Lardero',
                     nombre_corto : 'LAR',
                     bandera : 'LAR-min.png',
                 },
                 {
+                    federacion:'RJA',
                     name : 'Santo Domingo',
                     nombre_corto : 'SAN',
                     bandera : 'SAN-min.png',
                 },
-
-            ]
-        },
-        {
-            nombre : 'Navarra',
-            nombreCorto : 'NAV',
-            equipos: [
                 {
+                    federacion:'NAV',
                     name : 'Pamplona',
                     nombre_corto : 'PAM',
                     bandera : 'PAM-min.png',
                 },
                 {
+                    federacion:'NAV',
                     name : 'Tudela',
                     nombre_corto : 'TUD',
                     bandera : 'TUD-min.png',
                 },
                 {
+                    federacion:'NAV',
                     name : 'Barañáin',
                     nombre_corto : 'BAR',
                     bandera : 'BAR-min.png',
                 },
                 {
+                    federacion:'NAV',
                     name : 'Alsasua',
                     nombre_corto : 'ALS',
                     bandera : 'ALS-min.png',
                 },
                 {
+                    federacion:'NAV',
                     name : 'Burlada',
                     nombre_corto : 'BUR',
                     bandera : 'BUR-min.png',
                 },
                 {
+                    federacion:'NAV',
                     name : 'Baztán',
                     nombre_corto : 'BAZ',
                     bandera : 'BAZ-min.png',
                 },
                 {
+                    federacion:'NAV',
                     name : 'Estella',
                     nombre_corto : 'EST',
                     bandera : 'EST-min.png',
                 },
                 {
+                    federacion:'NAV',
                     name : 'Tafalla',
                     nombre_corto : 'TAF',
                     bandera : 'TAF-min.png',
                 },
-
-            ]
-        },
-        {
-            nombre : 'País Vasco',
-            nombreCorto : 'PVA',
-            equipos: [
                 {
+                    federacion:'PVA',
                     name : 'Bilbao',
                     nombre_corto : 'BIL',
                     bandera : 'BIL-min.png',
                 },
                 {
+                    federacion:'PVA',
                     name : 'Vitoria',
                     nombre_corto : 'VIT',
                     bandera : 'VIT-min.png',
                 },
                 {
+                    federacion:'PVA',
                     name : 'San Sebastián',
                     nombre_corto : 'SSB',
                     bandera : 'SSB-min.png',
                 },
                 {
+                    federacion:'PVA',
                     name : 'Barakaldo',
                     nombre_corto : 'BAR',
                     bandera : 'BAR-min.png',
                 },
                 {
+                    federacion:'PVA',
                     name : 'Getxo',
                     nombre_corto : 'GET',
                     bandera : 'GET-min.png',
                 },
                 {
+                    federacion:'PVA',
                     name : 'Irún',
                     nombre_corto : 'IRU',
                     bandera : 'IRU-min.png',
                 },
                 {
+                    federacion:'PVA',
                     name : 'Portugalete',
                     nombre_corto : 'POR',
                     bandera : 'POR-min.png',
                 },
                 {
+                    federacion:'PVA',
                     name : 'Santurce',
                     nombre_corto : 'SAN',
                     bandera : 'SAN-min.png',
                 },
-
-            ]
-        },
-        {
-            nombre : 'Principado de Asturias',
-            nombreCorto : 'AST',
-            equipos: [
                 {
+                    federacion:'AST',
                     name : 'Gijón',
                     nombre_corto : 'GIJ',
                     bandera : 'GIJ-min.png',
                 },
                 {
+                    federacion:'AST',
                     name : 'Oviedo',
                     nombre_corto : 'OVI',
                     bandera : 'OVI-min.png',
                 },
                 {
+                    federacion:'AST',
                     name : 'Avilés',
                     nombre_corto : 'AVI',
                     bandera : 'AVI-min.png',
                 },
                 {
+                    federacion:'AST',
                     name : 'Siero',
                     nombre_corto : 'SIE',
                     bandera : 'SIE-min.png',
                 },
                 {
+                    federacion:'AST',
                     name : 'Langreo',
                     nombre_corto : 'LAN',
                     bandera : 'LAN-min.png',
                 },
                 {
+                    federacion:'AST',
                     name : 'Mieres',
                     nombre_corto : 'MIE',
                     bandera : 'MIE-min.png',
                 },
                 {
+                    federacion:'AST',
                     name : 'Villaviciosa',
                     nombre_corto : 'VIL',
                     bandera : 'VIL-min.png',
                 },
                 {
+                    federacion:'AST',
                     name : 'Castrillon',
                     nombre_corto : 'CAS',
                     bandera : 'CAS-min.png',
                 },
-
-            ]
-        },
-        {
-            nombre : 'Región de Murcia',
-            nombreCorto : 'MUR',
-            equipos: [
                 {
+                    federacion:'MUR',
                     name : 'Murcia',
                     nombre_corto : 'MUR',
                     bandera : 'MUR-min.png',
                 },
                 {
+                    federacion:'MUR',
                     name : 'Cartagena',
                     nombre_corto : 'CAR',
                     bandera : 'CAR-min.png',
                 },
                 {
+                    federacion:'MUR',
                     name : 'Lorca',
                     nombre_corto : 'LOR',
                     bandera : 'LOR-min.png',
                 },
                 {
+                    federacion:'MUR',
                     name : 'Molina de Segura',
                     nombre_corto : 'MOL',
                     bandera : 'MOL-min.png',
                 },
                 {
+                    federacion:'MUR',
                     name : 'Alcantarilla',
                     nombre_corto : 'ALC',
                     bandera : 'ALC-min.png',
                 },
                 {
+                    federacion:'MUR',
                     name : 'Torre Pacheco',
                     nombre_corto : 'TOR',
                     bandera : 'TOR-min.png',
                 },
                 {
+                    federacion:'MUR',
                     name : 'Cieza',
                     nombre_corto : 'CIE',
                     bandera : 'CIE-min.png',
                 },
                 {
+                    federacion:'MUR',
                     name : 'Águilas',
                     nombre_corto : 'AGU',
                     bandera : 'AGU-min.png',
-                },
+                }
+    ],
 
-            ]
+    federaciones : [
+        {
+            nombre : 'Andalucia',
+            nombreCorto : 'AND'
+        },
+        {
+            nombre : 'Aragón',
+            nombreCorto : 'ARG',
+        },
+        {
+            nombre : 'Cantabria',
+            nombreCorto : 'CNT',
+        },
+        {
+            nombre : 'Castilla y León',
+            nombreCorto : 'CLE'
+        },
+        {
+            nombre : 'Castilla-La Mancha',
+            nombreCorto : 'CLM'
+        },
+        {
+            nombre : 'Cataluña',
+            nombreCorto : 'CAT'
+        },
+        {
+            nombre : 'Comunidad Valenciana',
+            nombreCorto : 'VAL'
+        },
+        {
+            nombre : 'Comunidad de Madrid',
+            nombreCorto : 'MAD'
+        },
+        {
+            nombre : 'Extremadura',
+            nombreCorto : 'EXT',
+        },
+        {
+            nombre : 'Galicia',
+            nombreCorto : 'GAL'
+        },
+        {
+            nombre : 'Islas Baleares',
+            nombreCorto : 'BAL'
+        },
+        {
+            nombre : 'La Rioja',
+            nombreCorto : 'RJA'
+        },
+        {
+            nombre : 'Navarra',
+            nombreCorto : 'NAV'
+        },
+        {
+            nombre : 'País Vasco',
+            nombreCorto : 'PVA'
+        },
+        {
+            nombre : 'Principado de Asturias',
+            nombreCorto : 'AST'
+        },
+        {
+            nombre : 'Región de Murcia',
+            nombreCorto : 'MUR'
         }
         ]
+
     }
 

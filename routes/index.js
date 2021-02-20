@@ -70,8 +70,10 @@ api.delete('/deleteAllEquipos',EquiposCtrl.deleteAllEquipos);
 api.get('/generarEquipos',EquiposCtrl.generarEquipos);
 
 //Federaciones
-api.get('/generateFederaciones', FederacionesCtrl.generarEquipos);
+api.get('/generateFederaciones', FederacionesCtrl.generateFederaciones);
+api.get('/generateEquiposFederacion', FederacionesCtrl.generarEquiposFederacion);
 api.get('/federaciones', FederacionesCtrl.getFederaciones);
+api.get('/federaciones/equipos/:federacionName', FederacionesCtrl.getEquiposFederacion);
 api.get('/federaciones/detalle/:id', FederacionesCtrl.getFederacion);
 api.put('/federaciones/update/:id', FederacionesCtrl.rellenarPlantillaFederacion);
 api.put('/federaciones/actualizarCampeon/:id', FederacionesCtrl.actualizarCampeon);
