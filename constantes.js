@@ -804,7 +804,104 @@ module.exports = {
                     name : 'Águilas',
                     nombre_corto : 'AGU',
                     bandera : 'AGU-min.png',
-                }
+                },
+        {
+            federacion:'ARG',
+            name : 'Zaragoza',
+            nombre_corto : 'ZAR',
+            bandera : 'ZAR-min.png',
+        },
+        {
+            federacion:'ARG',
+            name : 'Huesca',
+            nombre_corto : 'HUE',
+            bandera : 'HUE-min.png',
+        },
+        {
+            federacion:'ARG',
+            name : 'Teruel',
+            nombre_corto : 'TER',
+            bandera : 'TER-min.png',
+        },
+        {
+            federacion:'ARG',
+            name : 'Calatayud',
+            nombre_corto : 'CAL',
+            bandera : 'CAL-min.png',
+        },
+        {
+            federacion:'ARG',
+            name : 'Barbastro',
+            nombre_corto : 'BAR',
+            bandera : 'BAR-min.png',
+        },
+        {
+            federacion:'ARG',
+            name : 'Alcañiz',
+            nombre_corto : 'ALC',
+            bandera : 'ALC-min.png',
+        },
+        {
+            federacion:'ARG',
+            name : 'Jaca',
+            nombre_corto : 'JAC',
+            bandera : 'JAC-min.png',
+        },
+        {
+            federacion:'ARG',
+            name : 'Tarazona',
+            nombre_corto : 'TAR',
+            bandera : 'TAR-min.png',
+        },
+        {
+            federacion:'CNT',
+            name : 'Santander',
+            nombre_corto : 'SNT',
+            bandera : 'SNT-min.png',
+        },
+        {
+            federacion:'CNT',
+            name : 'Torrelavega',
+            nombre_corto : 'TOR',
+            bandera : 'TOR-min.png',
+        },
+        {
+            federacion:'CNT',
+            name : 'Castro Urdiales',
+            nombre_corto : 'CAS',
+            bandera : 'CAS-min.png',
+        },
+        {
+            federacion:'CNT',
+            name : 'Laredo',
+            nombre_corto : 'LAR',
+            bandera : 'LAR-min.png',
+        },
+        {
+            federacion:'CNT',
+            name : 'Suances',
+            nombre_corto : 'SUA',
+            bandera : 'SUA-min.png',
+        },
+        {
+            federacion:'CNT',
+            name : 'San Vicente de la Barquera',
+            nombre_corto : 'VIC',
+            bandera : 'VIC-min.png',
+        },
+        {
+            federacion:'CNT',
+            name : 'Santillana del Mar',
+            nombre_corto : 'SLL',
+            bandera : 'SLL-min.png',
+        },
+        {
+            federacion:'CNT',
+            name : 'Comillas',
+            nombre_corto : 'CLL',
+            bandera : 'CLL-min.png',
+        },
+
     ],
 
     federaciones : [
