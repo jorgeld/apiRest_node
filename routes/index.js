@@ -84,6 +84,8 @@ api.put('/federaciones/campeonNacional', FederacionesCtrl.palmaresCampeonNaciona
 api.put('/federaciones/campeonRecopa', FederacionesCtrl.palmaresCampeonRecopa);
 api.put('/federaciones/campeonFerias', FederacionesCtrl.palmaresCampeonFerias);
 
+api.get('/federaciones/getCampeones', FederacionesCtrl.getCampeones);
+
 //Partidos
 api.post('/partido', PartidosCtrl.newPartido);
 api.get('/partidos', PartidosCtrl.getPartidos);
